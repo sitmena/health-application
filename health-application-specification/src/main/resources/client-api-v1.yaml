@@ -1,0 +1,102 @@
+openapi: 3.0.3
+
+info:
+  title: Redeem Client API Spec
+  description: Specs for Redeem Client API
+  version: 1.0.0
+  x-icon: credit_card
+
+servers:
+  - description: local test
+    url: http://localhost:8080/api/v1
+
+tags:
+  - name: Retail
+
+paths:
+  /client-api/v1/config/redeem:
+    description: Redeem Configuration
+    post:
+      security:
+        - BearerAuth
+      description: Adds or updates a redeem
+      operationId: postRedeemConfiguration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/redeem-item.yaml'
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/redeem-item.yaml'
+          description: return general status response
+        400:
+          $ref: 'lib/common-types.yaml#/components/responses/400BadRequest'
+        500:
+          $ref: 'lib/common-types.yaml#/components/responses/500InternalServerError'
+      tags:
+        - redeems
+
+  /client-api/v1/fitness:
+    description: No description available
+    post:
+      security:
+        - BearerAuth
+      description: Adds or updates a redeem
+      operationId: postFitness
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/fitness-item.yaml'
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fitnessData'
+          description: return general status response
+        400:
+          $ref: 'lib/common-types.yaml#/components/responses/400BadRequest'
+        500:
+          $ref: 'lib/common-types.yaml#/components/responses/500InternalServerError'
+      tags:
+        - fitness
+
+  /client-api/v1/clientRedeem:
+    post:
+      security:
+        - BearerAuth
+      description: Adds or updates a redeem
+      operationId: doRedeem
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/fitness-item.yaml'
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fitnessData'
+          description: return general status response
+      tags:
+        - clientRedeem
+
+components:
+  schemas:
+    fitnessData:
+      type: object
+      properties:
+        fitnness:
+          type: array
+          items:
+            $ref: 'schemas/fitness-item.yaml'
+        redeem:
+          $ref: 'schemas/redeem-item.yaml'
+        additions:
+          $ref: '../lib/schemas/additions.yaml'

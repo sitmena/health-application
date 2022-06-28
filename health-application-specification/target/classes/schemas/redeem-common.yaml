@@ -1,0 +1,48 @@
+#openapi: 3.0.3
+#
+#info:
+#  title: OpenAPI Redeem Common
+#  description: Common items to use in schemas.
+#  version: "1.0"
+#
+#paths: { }
+#
+#components:
+#  parameters:
+#    redeemIdQuery:
+#      name: id
+#      description: Id of the redeem record
+#      in: query
+#      required: true
+#      schema:
+#        type: string
+#
+#  requestBodies:
+#    RedeemItemRequest:
+#      description: payment card details
+#      content:
+#        application/json:
+#          schema:
+#            $ref: '#/components/schemas/RedeemItem'
+#          example:
+#            $ref: 'examples/example-redeem.json'
+#
+#  responses:
+#    RedeemItemResponse:
+#      description: Successful redeem ID api response
+#      content:
+#        application/json:
+#          schema:
+#            $ref: '#/components/schemas/RedeemId'
+#          example:
+#            $ref: 'examples/example-redeem-created.json'
+#
+#  schemas:
+#    RedeemItem:
+#      $ref: 'schemas/redeem-item.yaml'
+#
+#    RedeemId:
+#      type: object
+#      properties:
+#        id:
+#          type: string

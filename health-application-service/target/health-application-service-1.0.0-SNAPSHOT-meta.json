@@ -1,0 +1,5 @@
+{"images": [{
+    "registry": "development",
+    "image": "health-application-service",
+    "tag": "1.0.0-SNAPSHOT"
+}]}

@@ -1,0 +1,4 @@
+title: Redeems
+type: array
+items:
+  $ref: 'redeem-item.yaml'

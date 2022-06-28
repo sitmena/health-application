@@ -1,0 +1,239 @@
+openapi: 3.0.3
+info:
+  title: Redeem Client API Spec
+  description: Specs for Redeem Client API
+  version: 1.0.0
+  x-icon: credit_card
+servers:
+- url: http://localhost:8080/api/v1
+  description: local test
+tags:
+- name: Retail
+paths:
+  /client-api/v1/config/redeem:
+    description: Redeem Configuration
+    post:
+      tags:
+      - redeems
+      description: Adds or updates a redeem
+      operationId: postRedeemConfiguration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/redeem-item'
+      responses:
+        "200":
+          description: return general status response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/redeem-item'
+        "400":
+          description: If one or more request parameters don't comply with the specification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+              example:
+                $ref: '#/components/examples/BadRequestExample'
+        "500":
+          description: If a runtime error occurs while processing the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/simple-error'
+              example:
+                $ref: '#/components/examples/InternalServerErrorExample'
+      security: []
+  /client-api/v1/fitness:
+    description: No description available
+    post:
+      tags:
+      - fitness
+      description: Adds or updates a redeem
+      operationId: postFitness
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/fitness-item'
+      responses:
+        "200":
+          description: return general status response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fitnessData'
+        "400":
+          description: If one or more request parameters don't comply with the specification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+              example:
+                $ref: '#/components/examples/BadRequestExample'
+        "500":
+          description: If a runtime error occurs while processing the request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/simple-error'
+              example:
+                $ref: '#/components/examples/InternalServerErrorExample'
+      security: []
+  /client-api/v1/clientRedeem:
+    post:
+      tags:
+      - clientRedeem
+      description: Adds or updates a redeem
+      operationId: doRedeem
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/fitness-item'
+      responses:
+        "200":
+          description: return general status response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fitnessData'
+      security: []
+components:
+  schemas:
+    fitnessData:
+      type: object
+      properties:
+        fitnness:
+          type: array
+          items:
+            $ref: '#/components/schemas/fitness-item'
+        redeem:
+          $ref: '#/components/schemas/redeem-item'
+        additions:
+          $ref: '#/components/schemas/additions'
+    redeem-item:
+      title: Redeem
+      required:
+      - criteriaName
+      - equivalencePoints
+      - measurement
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        bankName:
+          type: string
+        criteriaName:
+          type: string
+        measurement:
+          type: string
+        weight:
+          type: string
+        equivalencePoints:
+          type: string
+        createdAt:
+          pattern: yyyy-MM-dd HH:mm:ss
+          type: string
+          description: Creation date
+          example: 2022-06-27
+        updatedAt:
+          pattern: yyyy-MM-dd HH:mm:ss
+          type: string
+          description: Updated date
+          example: 2022-06-27
+        additions:
+          $ref: '#/components/schemas/additions'
+    error:
+      title: Error
+      required:
+      - key
+      - message
+      type: object
+      properties:
+        message:
+          minLength: 1
+          type: string
+          description: Any further information
+        key:
+          minLength: 1
+          type: string
+          description: Error summary
+        errors:
+          type: array
+          description: Detailed error information
+          items:
+            $ref: '#/components/schemas/error-item'
+    simple-error:
+      title: SimpleError
+      type: object
+      properties:
+        message:
+          minLength: 1
+          type: string
+          description: Any further information
+        key:
+          minLength: 1
+          type: string
+          description: Error summary
+    fitness-item:
+      title: Fitness
+      required:
+      - fromDate
+      - numberOfSteps
+      - toDate
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        numberOfSteps:
+          type: string
+        fromDate:
+          type: string
+        toDate:
+          type: string
+        createdAt:
+          pattern: yyyy-MM-dd HH:mm:ss
+          type: string
+          description: Create date
+          example: 2022-06-27
+        updatedAt:
+          pattern: yyyy-MM-dd HH:mm:ss
+          type: string
+          description: Updated date
+          example: 2022-06-27
+        additions:
+          $ref: '#/components/schemas/additions'
+    additions:
+      title: Additions
+      type: object
+      additionalProperties:
+        type: string
+      description: Additional properties
+    error-item:
+      title: ErrorItem
+      required:
+      - key
+      - message
+      type: object
+      properties:
+        message:
+          minLength: 1
+          type: string
+          description: Any further information.
+        key:
+          minLength: 1
+          type: string
+          description: "{capability-name}.api.{api-key-name}. For generated validation\
+            \ errors this is the path in the document the error resolves to. e.g.\
+            \ object name + '.' + field"
+        context:
+          type: object
+          additionalProperties:
+            type: string
+          description: Context can be anything used to construct localised messages.
+  examples: {}
