@@ -63,3 +63,10 @@ buildingblocks:
   security:
     xss:
       autoconfig: false
+
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.sitech.health: INFO

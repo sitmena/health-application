@@ -8,6 +8,7 @@ public class ServiceConstants {
     public static final String STEPS_CRITERIA_NAME = "Steps";
     public static final String AUTHORIZATION_HEDER = "Authorization";
     public static final String ERROR_IN_PERSIST_DATA = "500";
+    public static final String ERROR_REDEEM_CONVERTER = "500";
 
 
     private ServiceConstants() {

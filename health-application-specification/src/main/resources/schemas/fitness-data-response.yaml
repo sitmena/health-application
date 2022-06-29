@@ -1,0 +1,4 @@
+title: Fitness
+type: array
+items:
+  $ref: 'fitness-data.yaml'

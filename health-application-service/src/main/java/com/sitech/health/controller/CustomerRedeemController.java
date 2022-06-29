@@ -2,7 +2,7 @@ package com.sitech.health.controller;
 
 import com.sitech.dbs.health_service.api.service.v2.ClientRedeemApi;
 import com.sitech.dbs.health_service.api.service.v2.model.FitnessData;
-import com.sitech.dbs.health_service.api.service.v2.model.FitnessItem;
+import com.sitech.dbs.health_service.api.service.v2.model.HealthData;
 import com.sitech.health.commons.UserContextDto;
 import com.sitech.health.service.CustomerRedeemService;
 import com.sitech.health.service.secuirty.UserContextService;
@@ -28,9 +28,8 @@ public class CustomerRedeemController implements ClientRedeemApi {
     private HttpServletRequest httpServletRequest;
 
     @Override
-    public ResponseEntity<FitnessData> doRedeem(FitnessItem fitnessItem) {
+    public ResponseEntity<HealthData> doRedeem(FitnessData fitnessData) {
         UserContextDto userContextLite = userContextService.getUserContextLite();
-        return clientRedeemService.doRedeem(userContextLite , languageUtil.getRequestedLanguage(httpServletRequest) ,fitnessItem);
-
+        return clientRedeemService.doRedeem(userContextLite , languageUtil.getRequestedLanguage(httpServletRequest) ,fitnessData);
     }
 }

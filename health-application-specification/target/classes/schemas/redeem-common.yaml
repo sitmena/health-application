@@ -39,7 +39,7 @@
 #
 #  schemas:
 #    RedeemItem:
-#      $ref: 'schemas/redeem-item.yaml'
+#      $ref: 'schemas/redeem-configuration.yaml'
 #
 #    RedeemId:
 #      type: object

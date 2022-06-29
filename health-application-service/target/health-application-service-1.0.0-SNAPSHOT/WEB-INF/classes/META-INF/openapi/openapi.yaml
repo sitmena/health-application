@@ -10,25 +10,25 @@ servers:
 tags:
 - name: Retail
 paths:
-  /client-api/v1/config/redeem:
+  /client-api/v1/config/redeemConfiguration:
     description: Redeem Configuration
     post:
       tags:
-      - redeems
-      description: Adds or updates a redeem
+      - redeemConfiguration
+      description: Adds or updates a redeem Configuration
       operationId: postRedeemConfiguration
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/redeem-item'
+              $ref: '#/components/schemas/redeem-configuration'
       responses:
         "200":
           description: return general status response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/redeem-item'
+                $ref: '#/components/schemas/redeem-configuration'
         "400":
           description: If one or more request parameters don't comply with the specification
           content:
@@ -46,25 +46,25 @@ paths:
               example:
                 $ref: '#/components/examples/InternalServerErrorExample'
       security: []
-  /client-api/v1/fitness:
+  /client-api/v1/fitnessData:
     description: No description available
     post:
       tags:
-      - fitness
+      - fitnessData
       description: Adds or updates a redeem
       operationId: postFitness
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/fitness-item'
+              $ref: '#/components/schemas/fitness-data'
       responses:
         "200":
           description: return general status response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/fitnessData'
+                $ref: '#/components/schemas/healthData'
         "400":
           description: If one or more request parameters don't comply with the specification
           content:
@@ -92,34 +92,71 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/fitness-item'
+              $ref: '#/components/schemas/fitness-data'
       responses:
         "200":
           description: return general status response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/fitnessData'
+                $ref: '#/components/schemas/healthData'
+      security: []
+  /client-api/v1/clientSubscription:
+    post:
+      tags:
+      - subscription
+      description: Adds or updates a subscribe
+      operationId: subscribe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/subscription'
+      responses:
+        "200":
+          description: return general status response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/subscription'
+      security: []
+  /client-api/v1/activateDevice:
+    post:
+      tags:
+      - deviceActivation
+      description: Activate Device
+      operationId: activateDevice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deviceActivation'
+      responses:
+        "200":
+          description: return general status response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/deviceActivation'
       security: []
 components:
   schemas:
-    fitnessData:
+    healthData:
       type: object
       properties:
-        fitnness:
-          type: array
-          items:
-            $ref: '#/components/schemas/fitness-item'
-        redeem:
-          $ref: '#/components/schemas/redeem-item'
+        fitnnessData:
+          $ref: '#/components/schemas/fitness-data'
+        redeemConfiguration:
+          $ref: '#/components/schemas/redeem-configuration'
         additions:
           $ref: '#/components/schemas/additions'
-    redeem-item:
-      title: Redeem
+    redeem-configuration:
       required:
       - criteriaName
       - equivalencePoints
+      - maximumPointsToBeRedeemed
       - measurement
+      - minimumPointsToBeRedeemed
       type: object
       properties:
         id:
@@ -135,6 +172,10 @@ components:
           type: string
         equivalencePoints:
           type: string
+        minimumPointsToBeRedeemed:
+          type: integer
+        maximumPointsToBeRedeemed:
+          type: integer
         createdAt:
           pattern: yyyy-MM-dd HH:mm:ss
           type: string
@@ -179,9 +220,9 @@ components:
           minLength: 1
           type: string
           description: Error summary
-    fitness-item:
-      title: Fitness
+    fitness-data:
       required:
+      - deviceId
       - fromDate
       - numberOfSteps
       - toDate
@@ -196,6 +237,67 @@ components:
           type: string
         toDate:
           type: string
+        deviceId:
+          type: string
+        createdAt:
+          pattern: yyyy-MM-dd HH:mm:ss
+          type: string
+          description: Create date
+          example: 2022-06-27
+        updatedAt:
+          pattern: yyyy-MM-dd HH:mm:ss
+          type: string
+          description: Updated date
+          example: 2022-06-27
+        additions:
+          $ref: '#/components/schemas/additions'
+    subscription:
+      required:
+      - deviceId
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        deviceId:
+          type: string
+          description: Device Serial number
+        deviceType:
+          type: string
+          description: Device Operating System
+          enum:
+          - Android
+          - IOS
+        deviceName:
+          type: string
+        deviceStatus:
+          type: string
+          enum:
+          - ACTIVE
+          - DEACTIVATE
+        createdAt:
+          pattern: yyyy-MM-dd HH:mm:ss
+          type: string
+          description: Create date
+          example: 2022-06-27
+        updatedAt:
+          pattern: yyyy-MM-dd HH:mm:ss
+          type: string
+          description: Updated date
+          example: 2022-06-27
+        additions:
+          $ref: '#/components/schemas/additions'
+    deviceActivation:
+      required:
+      - deviceId
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        deviceId:
+          type: string
+          description: Device Serial number
         createdAt:
           pattern: yyyy-MM-dd HH:mm:ss
           type: string

@@ -14,33 +14,33 @@ tags:
   - name: Retail
 
 paths:
-  /client-api/v1/config/redeem:
+  /client-api/v1/config/redeemConfiguration:
     description: Redeem Configuration
     post:
       security:
         - BearerAuth
-      description: Adds or updates a redeem
+      description: Adds or updates a redeem Configuration
       operationId: postRedeemConfiguration
       requestBody:
         content:
           application/json:
             schema:
-              $ref: 'schemas/redeem-item.yaml'
+              $ref: 'schemas/redeem-configuration.yaml'
       responses:
         200:
           content:
             application/json:
               schema:
-                $ref: 'schemas/redeem-item.yaml'
+                $ref: 'schemas/redeem-configuration.yaml'
           description: return general status response
         400:
           $ref: 'lib/common-types.yaml#/components/responses/400BadRequest'
         500:
           $ref: 'lib/common-types.yaml#/components/responses/500InternalServerError'
       tags:
-        - redeems
+        - redeemConfiguration
 
-  /client-api/v1/fitness:
+  /client-api/v1/fitnessData:
     description: No description available
     post:
       security:
@@ -51,20 +51,20 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'schemas/fitness-item.yaml'
+              $ref: 'schemas/fitness-data.yaml'
       responses:
         200:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/fitnessData'
+                $ref: '#/components/schemas/healthData'
           description: return general status response
         400:
           $ref: 'lib/common-types.yaml#/components/responses/400BadRequest'
         500:
           $ref: 'lib/common-types.yaml#/components/responses/500InternalServerError'
       tags:
-        - fitness
+        - fitnessData
 
   /client-api/v1/clientRedeem:
     post:
@@ -76,27 +76,67 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'schemas/fitness-item.yaml'
+              $ref: 'schemas/fitness-data.yaml'
       responses:
         200:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/fitnessData'
+                $ref: '#/components/schemas/healthData'
           description: return general status response
       tags:
         - clientRedeem
 
+  /client-api/v1/clientSubscription:
+    post:
+      security:
+        - BearerAuth
+      description: Adds or updates a subscribe
+      operationId: subscribe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/subscription.yaml'
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/subscription.yaml'
+          description: return general status response
+      tags:
+        - subscription
+
+  /client-api/v1/activateDevice:
+    post:
+      security:
+        - BearerAuth
+      description: Activate Device
+      operationId: activateDevice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas/deviceActivation.yaml'
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/deviceActivation.yaml'
+          description: return general status response
+      tags:
+        - deviceActivation
+
 components:
   schemas:
-    fitnessData:
+    healthData:
       type: object
       properties:
-        fitnness:
-          type: array
-          items:
-            $ref: 'schemas/fitness-item.yaml'
-        redeem:
-          $ref: 'schemas/redeem-item.yaml'
+        fitnnessData:
+          $ref: 'schemas/fitness-data.yaml'
+        redeemConfiguration:
+          $ref: 'schemas/redeem-configuration.yaml'
         additions:
           $ref: '../lib/schemas/additions.yaml'

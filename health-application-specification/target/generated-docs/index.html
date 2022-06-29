@@ -1487,21 +1487,39 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                                     </span>
                                 </a>
                             </li>
-                        <li class="nav-header" data-group="Fitness"><a href="#api-Fitness">API Methods - Fitness</a></li>
-                            <li data-group="Fitness" data-name="postFitness" class="">
-                                <a href="#api-Fitness-postFitness" title="" data-deprecated="false">
+                        <li class="nav-header" data-group="DeviceActivation"><a href="#api-DeviceActivation">API Methods - DeviceActivation</a></li>
+                            <li data-group="DeviceActivation" data-name="activateDevice" class="">
+                                <a href="#api-DeviceActivation-activateDevice" title="" data-deprecated="false">
+                                    <span class="prettyprint language-html" data-type="post">post</span>
+                                    <span class="text">
+                                        activateDevice
+                                    </span>
+                                </a>
+                            </li>
+                        <li class="nav-header" data-group="FitnessData"><a href="#api-FitnessData">API Methods - FitnessData</a></li>
+                            <li data-group="FitnessData" data-name="postFitness" class="">
+                                <a href="#api-FitnessData-postFitness" title="" data-deprecated="false">
                                     <span class="prettyprint language-html" data-type="post">post</span>
                                     <span class="text">
                                         postFitness
                                     </span>
                                 </a>
                             </li>
-                        <li class="nav-header" data-group="Redeems"><a href="#api-Redeems">API Methods - Redeems</a></li>
-                            <li data-group="Redeems" data-name="postRedeemConfiguration" class="">
-                                <a href="#api-Redeems-postRedeemConfiguration" title="" data-deprecated="false">
+                        <li class="nav-header" data-group="RedeemConfiguration"><a href="#api-RedeemConfiguration">API Methods - RedeemConfiguration</a></li>
+                            <li data-group="RedeemConfiguration" data-name="postRedeemConfiguration" class="">
+                                <a href="#api-RedeemConfiguration-postRedeemConfiguration" title="" data-deprecated="false">
                                     <span class="prettyprint language-html" data-type="post">post</span>
                                     <span class="text">
                                         postRedeemConfiguration
+                                    </span>
+                                </a>
+                            </li>
+                        <li class="nav-header" data-group="Subscription"><a href="#api-Subscription">API Methods - Subscription</a></li>
+                            <li data-group="Subscription" data-name="subscribe" class="">
+                                <a href="#api-Subscription-subscribe" title="" data-deprecated="false">
+                                    <span class="prettyprint language-html" data-type="post">post</span>
+                                    <span class="text">
+                                        subscribe
                                     </span>
                                 </a>
                             </li>
@@ -1544,20 +1562,20 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
 
 
                           <h2>Request Body Schema</h2>
-                              <div class="request-body" id="requests-fitness-item-doRedeem--wrapper" style='margin-bottom: 10px;'>
+                              <div class="request-body" id="requests-fitness-data-doRedeem--wrapper" style='margin-bottom: 10px;'>
     <p class="marked"></p>
     <div class="requests-wrapper">
         <div class="examples-tab-wrapper">
             <div class="exampleStyle">
-                <div class="left-side" id="requests-fitness-item-doRedeem--schema" style="width: calc((100% + 64px) * 0.6 - 32px)" >
-                    <div id="requests-fitness-item-doRedeem--schema-data">
+                <div class="left-side" id="requests-fitness-data-doRedeem--schema" style="width: calc((100% + 64px) * 0.6 - 32px)" >
+                    <div id="requests-fitness-data-doRedeem--schema-data">
                         <script>
                             $(document).ready(function() {
                                 var schemaWrapper = {
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/fitness-item"
+        "$ref" : "#/components/schemas/fitness-data"
       }
     }
   }
@@ -1602,14 +1620,14 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                                 }
 
                                 var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-                                $('#requests-fitness-item-doRedeem--schema-data-input').val(JSON.stringify(schema));
-                                var result = $('#requests-fitness-item-doRedeem--schema');
+                                $('#requests-fitness-data-doRedeem--schema-data-input').val(JSON.stringify(schema));
+                                var result = $('#requests-fitness-data-doRedeem--schema');
                                 result.empty();
                                 result.append(view.render());
                             });
                         </script>
                     </div>
-                    <input id='requests-fitness-item-doRedeem--schema-data-input' type='hidden' value=''/>
+                    <input id='requests-fitness-data-doRedeem--schema-data-input' type='hidden' value=''/>
                 </div>
 
                     <div class="dropdown-examples">
@@ -1618,11 +1636,11 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                             <span>Example</span>
                             <select class="example-dropdown-select">
                                     <option data-toggle="tab"
-                                            value="#requests-fitness-item-doRedeem--example-example">example - application/json</option>
+                                            value="#requests-fitness-data-doRedeem--example-example">example - application/json</option>
                             </select>
                         </label>
                             <div class="example-dropdown-value"
-                                 id="requests-fitness-item-doRedeem--example-example">
+                                 id="requests-fitness-data-doRedeem--example-example">
                                     <div class="buttons-wrapper">
                                         <button data-action="copy"> Copy </button> <button data-action="expand"> Expand all </button><button data-action="collapse"> Collapse all </button>
                                     </div>
@@ -1635,6 +1653,7 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
   },
   "toDate" : "toDate",
   "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+  "deviceId" : "deviceId",
   "updatedAt" : "2022-06-27"
 }</div>
                             </div>
@@ -1662,7 +1681,7 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/fitnessData"
+        "$ref" : "#/components/schemas/healthData"
       }
     }
   }
@@ -1733,43 +1752,36 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                                     <button data-action="copy"> Copy </button> <button data-action="expand"> Expand all </button><button data-action="collapse"> Collapse all </button>
                                 </div>
                                 <div class="json-viewer ">{
+  "fitnnessData" : {
+    "fromDate" : "fromDate",
+    "createdAt" : "2022-06-27",
+    "numberOfSteps" : "numberOfSteps",
+    "additions" : {
+      "key" : "additions"
+    },
+    "toDate" : "toDate",
+    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "deviceId" : "deviceId",
+    "updatedAt" : "2022-06-27"
+  },
   "additions" : {
     "key" : "additions"
   },
-  "redeem" : {
+  "redeemConfiguration" : {
     "createdAt" : "2022-06-27",
     "additions" : {
       "key" : "additions"
     },
     "criteriaName" : "criteriaName",
     "weight" : "weight",
+    "maximumPointsToBeRedeemed" : 6,
     "bankName" : "bankName",
     "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+    "minimumPointsToBeRedeemed" : 0,
     "equivalencePoints" : "equivalencePoints",
     "measurement" : "measurement",
     "updatedAt" : "2022-06-27"
-  },
-  "fitnness" : [ {
-    "fromDate" : "fromDate",
-    "createdAt" : "2022-06-27",
-    "numberOfSteps" : "numberOfSteps",
-    "additions" : {
-      "key" : "additions"
-    },
-    "toDate" : "toDate",
-    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-    "updatedAt" : "2022-06-27"
-  }, {
-    "fromDate" : "fromDate",
-    "createdAt" : "2022-06-27",
-    "numberOfSteps" : "numberOfSteps",
-    "additions" : {
-      "key" : "additions"
-    },
-    "toDate" : "toDate",
-    "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
-    "updatedAt" : "2022-06-27"
-  } ]
+  }
 }</div>
                         </div>
 
@@ -1791,13 +1803,13 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                     </article>
                   </div>
               </section>
-            <section id="api-Fitness">
-              <h1>Fitness</h1>
-                <div id="api-Fitness-postFitness">
-                  <article id="api-Fitness-postFitness-0" data-group="User" data-name="postFitness" data-version="0">
-                          <h1>postFitness</h1>
+            <section id="api-DeviceActivation">
+              <h1>DeviceActivation</h1>
+                <div id="api-DeviceActivation-activateDevice">
+                  <article id="api-DeviceActivation-activateDevice-0" data-group="User" data-name="activateDevice" data-version="0">
+                          <h1>activateDevice</h1>
                           
-                    <p class="marked">Adds or updates a redeem</p>
+                    <p class="marked">Activate Device</p>
                       <br/>
                           <div class="secured-by">
                               <h2>Secured by Backbase Access Control</h2>
@@ -1805,7 +1817,7 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                               
                               
                           </div>
-                      <pre class="prettyprint language-html prettyprinted"><code><span class="pln"><span  class="http-method" data-type="post">post</span>/client-api/v1/fitness</span></code></pre>
+                      <pre class="prettyprint language-html prettyprinted"><code><span class="pln"><span  class="http-method" data-type="post">post</span>/client-api/v1/activateDevice</span></code></pre>
 
 
 
@@ -1813,20 +1825,20 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
 
 
                           <h2>Request Body Schema</h2>
-                              <div class="request-body" id="requests-fitness-item-postFitness--wrapper" style='margin-bottom: 10px;'>
+                              <div class="request-body" id="requests-deviceActivation-activateDevice--wrapper" style='margin-bottom: 10px;'>
     <p class="marked"></p>
     <div class="requests-wrapper">
         <div class="examples-tab-wrapper">
             <div class="exampleStyle">
-                <div class="left-side" id="requests-fitness-item-postFitness--schema" style="width: calc((100% + 64px) * 0.6 - 32px)" >
-                    <div id="requests-fitness-item-postFitness--schema-data">
+                <div class="left-side" id="requests-deviceActivation-activateDevice--schema" style="width: calc((100% + 64px) * 0.6 - 32px)" >
+                    <div id="requests-deviceActivation-activateDevice--schema-data">
                         <script>
                             $(document).ready(function() {
                                 var schemaWrapper = {
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/fitness-item"
+        "$ref" : "#/components/schemas/deviceActivation"
       }
     }
   }
@@ -1871,14 +1883,14 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                                 }
 
                                 var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-                                $('#requests-fitness-item-postFitness--schema-data-input').val(JSON.stringify(schema));
-                                var result = $('#requests-fitness-item-postFitness--schema');
+                                $('#requests-deviceActivation-activateDevice--schema-data-input').val(JSON.stringify(schema));
+                                var result = $('#requests-deviceActivation-activateDevice--schema');
                                 result.empty();
                                 result.append(view.render());
                             });
                         </script>
                     </div>
-                    <input id='requests-fitness-item-postFitness--schema-data-input' type='hidden' value=''/>
+                    <input id='requests-deviceActivation-activateDevice--schema-data-input' type='hidden' value=''/>
                 </div>
 
                     <div class="dropdown-examples">
@@ -1887,23 +1899,21 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                             <span>Example</span>
                             <select class="example-dropdown-select">
                                     <option data-toggle="tab"
-                                            value="#requests-fitness-item-postFitness--example-example">example - application/json</option>
+                                            value="#requests-deviceActivation-activateDevice--example-example">example - application/json</option>
                             </select>
                         </label>
                             <div class="example-dropdown-value"
-                                 id="requests-fitness-item-postFitness--example-example">
+                                 id="requests-deviceActivation-activateDevice--example-example">
                                     <div class="buttons-wrapper">
                                         <button data-action="copy"> Copy </button> <button data-action="expand"> Expand all </button><button data-action="collapse"> Collapse all </button>
                                     </div>
                                     <div class="json-viewer ">{
-  "fromDate" : "fromDate",
   "createdAt" : "2022-06-27",
-  "numberOfSteps" : "numberOfSteps",
   "additions" : {
     "key" : "additions"
   },
-  "toDate" : "toDate",
   "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+  "deviceId" : "deviceId",
   "updatedAt" : "2022-06-27"
 }</div>
                             </div>
@@ -1916,14 +1926,14 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
 
 
                       <h2>Responses</h2>
-                       <h3 class="response-header-tab " data-code="200" id="examples-Fitness-postFitness-title-200"></h3>
-<div class="response-content-block " data-code="200" id="examples-Fitness-postFitness-title-200-content">
-    <p id="examples-Fitness-postFitness-description-200" class="marked"></p>
-    <div class="exampleStyle" id="responses-Fitness-postFitness-200-wrapper" style='margin-bottom: 10px;'>
+                       <h3 class="response-header-tab " data-code="200" id="examples-DeviceActivation-activateDevice-title-200"></h3>
+<div class="response-content-block " data-code="200" id="examples-DeviceActivation-activateDevice-title-200-content">
+    <p id="examples-DeviceActivation-activateDevice-description-200" class="marked"></p>
+    <div class="exampleStyle" id="responses-DeviceActivation-activateDevice-200-wrapper" style='margin-bottom: 10px;'>
     <div class="left-side">
             <h3>Schema</h3>
-            <div class="schema-block" id="responses-Fitness-postFitness-200-schema">
-                <div id="responses-Fitness-postFitness-schema-200">
+            <div class="schema-block" id="responses-DeviceActivation-activateDevice-200-schema">
+                <div id="responses-DeviceActivation-activateDevice-schema-200">
                     <script>
                         $(document).ready(function() {
                           var schemaWrapper = {
@@ -1931,7 +1941,7 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/fitnessData"
+        "$ref" : "#/components/schemas/deviceActivation"
       }
     }
   }
@@ -1976,14 +1986,14 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                             }
 
                           var view = new JSONSchemaView(schema, 3);
-                          $('#responses-Fitness-postFitness-200-schema-data-input').val(JSON.stringify(schema));
-                          var result = $('#responses-Fitness-postFitness-schema-200');
+                          $('#responses-DeviceActivation-activateDevice-200-schema-data-input').val(JSON.stringify(schema));
+                          var result = $('#responses-DeviceActivation-activateDevice-schema-200');
                           result.empty();
                           result.append(view.render());
                         });
                 </script>
                 </div>
-                <input id='responses-Fitness-postFitness-200-schema-data-input' type='hidden' value=''></input>
+                <input id='responses-DeviceActivation-activateDevice-200-schema-data-input' type='hidden' value=''></input>
             </div>
     </div>
 
@@ -1991,24 +2001,238 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
     </div>
 </div>
 <script>
-  var responseFitness200_description = `return general status response`;
-  var responseFitness200_description_break = responseFitness200_description.indexOf('\n');
-  if (responseFitness200_description_break == -1) {
-    $("#examples-Fitness-postFitness-title-200").html("<span class='response-header-tab-handle'></span> <b>200</b> " + responseFitness200_description);
+  var responseDeviceActivation200_description = `return general status response`;
+  var responseDeviceActivation200_description_break = responseDeviceActivation200_description.indexOf('\n');
+  if (responseDeviceActivation200_description_break == -1) {
+    $("#examples-DeviceActivation-activateDevice-title-200").html("<span class='response-header-tab-handle'></span> <b>200</b> " + responseDeviceActivation200_description);
   } else {
-    $("#examples-Fitness-postFitness-title-200").html("<span class='response-header-tab-handle'></span> <b>200</b> " + responseFitness200_description.substring(0, responseFitness200_description_break));
-    $("#examples-Fitness-postFitness-description-200").html(responseFitness200_description.substring(responseFitness200_description_break));
+    $("#examples-DeviceActivation-activateDevice-title-200").html("<span class='response-header-tab-handle'></span> <b>200</b> " + responseDeviceActivation200_description.substring(0, responseDeviceActivation200_description_break));
+    $("#examples-DeviceActivation-activateDevice-description-200").html(responseDeviceActivation200_description.substring(responseDeviceActivation200_description_break));
   }
 </script>
 
-                       <h3 class="response-header-tab collapsed" data-code="400" id="examples-Fitness-postFitness-title-400"></h3>
-<div class="response-content-block collapsed" data-code="400" id="examples-Fitness-postFitness-title-400-content">
-    <p id="examples-Fitness-postFitness-description-400" class="marked"></p>
-    <div class="exampleStyle" id="responses-Fitness-postFitness-400-wrapper" style='margin-bottom: 10px;'>
+                    </article>
+                  </div>
+              </section>
+            <section id="api-FitnessData">
+              <h1>FitnessData</h1>
+                <div id="api-FitnessData-postFitness">
+                  <article id="api-FitnessData-postFitness-0" data-group="User" data-name="postFitness" data-version="0">
+                          <h1>postFitness</h1>
+                          
+                    <p class="marked">Adds or updates a redeem</p>
+                      <br/>
+                          <div class="secured-by">
+                              <h2>Secured by Backbase Access Control</h2>
+                              
+                              
+                              
+                          </div>
+                      <pre class="prettyprint language-html prettyprinted"><code><span class="pln"><span  class="http-method" data-type="post">post</span>/client-api/v1/fitnessData</span></code></pre>
+
+
+
+
+
+
+                          <h2>Request Body Schema</h2>
+                              <div class="request-body" id="requests-fitness-data-postFitness--wrapper" style='margin-bottom: 10px;'>
+    <p class="marked"></p>
+    <div class="requests-wrapper">
+        <div class="examples-tab-wrapper">
+            <div class="exampleStyle">
+                <div class="left-side" id="requests-fitness-data-postFitness--schema" style="width: calc((100% + 64px) * 0.6 - 32px)" >
+                    <div id="requests-fitness-data-postFitness--schema-data">
+                        <script>
+                            $(document).ready(function() {
+                                var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/fitness-data"
+      }
+    }
+  }
+};
+                                var schema = findNode('schema', schemaWrapper.content).schema;
+
+                                if (!schema) {
+                                    schema = schemaWrapper.schema;
+                                }
+                                if (schema.$ref != null) {
+                                    schema = defsParser.$refs.get(schema.$ref);
+                                    if (schema.type === 'array' && schema.items != null && schema.items.$ref != null) {
+                                        schema.items = defsParser.$refs.get(schema.items.$ref);
+
+
+                                    }
+                                }else if (schema.type === 'array' && schema.items != null && schema.items.$ref != null) {
+                                    schema.items = defsParser.$refs.get(schema.items.$ref);
+                                } else {
+                                    schemaWrapper.definitions = Object.assign({}, defs);
+                                    $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                        console.log(err);
+                                    });
+                                }
+
+                                if (schema && schema.allOf) {
+                                    schema.allOf = schema.allOf.map( i =>  i.$ref ? defsParser.$refs.get(i.$ref) : i).filter(Boolean);
+                                    schema = mergeAllOf(schema,  {
+                                        resolvers: {
+                                            defaultResolver: mergeAllOf.options.resolvers.title
+                                        }
+                                    });
+                                }
+
+                                if (schema.items && schema.items.allOf) {
+                                    schema.items.allOf = schema.items.allOf.map( i =>  i.$ref ? defsParser.$refs.get(i.$ref) : i).filter(Boolean);
+                                    schema.items = mergeAllOf(schema.items,  {
+                                        resolvers: {
+                                            defaultResolver: mergeAllOf.options.resolvers.title
+                                        }
+                                    });
+                                }
+
+                                var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+                                $('#requests-fitness-data-postFitness--schema-data-input').val(JSON.stringify(schema));
+                                var result = $('#requests-fitness-data-postFitness--schema');
+                                result.empty();
+                                result.append(view.render());
+                            });
+                        </script>
+                    </div>
+                    <input id='requests-fitness-data-postFitness--schema-data-input' type='hidden' value=''/>
+                </div>
+
+                    <div class="dropdown-examples">
+                        <h2>Request examples</h2>
+                        <label>
+                            <span>Example</span>
+                            <select class="example-dropdown-select">
+                                    <option data-toggle="tab"
+                                            value="#requests-fitness-data-postFitness--example-example">example - application/json</option>
+                            </select>
+                        </label>
+                            <div class="example-dropdown-value"
+                                 id="requests-fitness-data-postFitness--example-example">
+                                    <div class="buttons-wrapper">
+                                        <button data-action="copy"> Copy </button> <button data-action="expand"> Expand all </button><button data-action="collapse"> Collapse all </button>
+                                    </div>
+                                    <div class="json-viewer ">{
+  "fromDate" : "fromDate",
+  "createdAt" : "2022-06-27",
+  "numberOfSteps" : "numberOfSteps",
+  "additions" : {
+    "key" : "additions"
+  },
+  "toDate" : "toDate",
+  "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+  "deviceId" : "deviceId",
+  "updatedAt" : "2022-06-27"
+}</div>
+                            </div>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                      <h2>Responses</h2>
+                       <h3 class="response-header-tab " data-code="200" id="examples-FitnessData-postFitness-title-200"></h3>
+<div class="response-content-block " data-code="200" id="examples-FitnessData-postFitness-title-200-content">
+    <p id="examples-FitnessData-postFitness-description-200" class="marked"></p>
+    <div class="exampleStyle" id="responses-FitnessData-postFitness-200-wrapper" style='margin-bottom: 10px;'>
     <div class="left-side">
             <h3>Schema</h3>
-            <div class="schema-block" id="responses-Fitness-postFitness-400-schema">
-                <div id="responses-Fitness-postFitness-schema-400">
+            <div class="schema-block" id="responses-FitnessData-postFitness-200-schema">
+                <div id="responses-FitnessData-postFitness-schema-200">
+                    <script>
+                        $(document).ready(function() {
+                          var schemaWrapper = {
+  "description" : "return general status response",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/healthData"
+      }
+    }
+  }
+};
+                          var schema = findNode('schema', schemaWrapper.content).schema;
+
+                          if (!schema) {
+                            schema = schemaWrapper.schema;
+                          }
+                          if (schema.$ref != null) {
+                            schema = defsParser.$refs.get(schema.$ref);
+                            if (schema.type === 'array' && schema.items != null && schema.items.$ref != null) {
+                                schema.items = defsParser.$refs.get(schema.items.$ref);
+
+
+                            }
+                          }else if (schema.type === 'array' && schema.items != null && schema.items.$ref != null) {
+                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                          } else {
+                            schemaWrapper.definitions = Object.assign({}, defs);
+                            $RefParser.dereference(schemaWrapper).catch(function(err) {
+                              console.log(err);
+                            });
+                          }
+
+                          if (schema && schema.allOf) {
+                              schema.allOf = schema.allOf.map( i =>  i.$ref ? defsParser.$refs.get(i.$ref) : i).filter(Boolean);
+                              schema = mergeAllOf(schema,  {
+                                resolvers: {
+                                  defaultResolver: mergeAllOf.options.resolvers.title
+                                }
+                              });
+                            }
+
+                          if (schema.items && schema.items.allOf) {
+                              schema.items.allOf = schema.items.allOf.map( i =>  i.$ref ? defsParser.$refs.get(i.$ref) : i).filter(Boolean);
+                              schema.items = mergeAllOf(schema.items,  {
+                                resolvers: {
+                                  defaultResolver: mergeAllOf.options.resolvers.title
+                                }
+                              });
+                            }
+
+                          var view = new JSONSchemaView(schema, 3);
+                          $('#responses-FitnessData-postFitness-200-schema-data-input').val(JSON.stringify(schema));
+                          var result = $('#responses-FitnessData-postFitness-schema-200');
+                          result.empty();
+                          result.append(view.render());
+                        });
+                </script>
+                </div>
+                <input id='responses-FitnessData-postFitness-200-schema-data-input' type='hidden' value=''></input>
+            </div>
+    </div>
+
+
+    </div>
+</div>
+<script>
+  var responseFitnessData200_description = `return general status response`;
+  var responseFitnessData200_description_break = responseFitnessData200_description.indexOf('\n');
+  if (responseFitnessData200_description_break == -1) {
+    $("#examples-FitnessData-postFitness-title-200").html("<span class='response-header-tab-handle'></span> <b>200</b> " + responseFitnessData200_description);
+  } else {
+    $("#examples-FitnessData-postFitness-title-200").html("<span class='response-header-tab-handle'></span> <b>200</b> " + responseFitnessData200_description.substring(0, responseFitnessData200_description_break));
+    $("#examples-FitnessData-postFitness-description-200").html(responseFitnessData200_description.substring(responseFitnessData200_description_break));
+  }
+</script>
+
+                       <h3 class="response-header-tab collapsed" data-code="400" id="examples-FitnessData-postFitness-title-400"></h3>
+<div class="response-content-block collapsed" data-code="400" id="examples-FitnessData-postFitness-title-400-content">
+    <p id="examples-FitnessData-postFitness-description-400" class="marked"></p>
+    <div class="exampleStyle" id="responses-FitnessData-postFitness-400-wrapper" style='margin-bottom: 10px;'>
+    <div class="left-side">
+            <h3>Schema</h3>
+            <div class="schema-block" id="responses-FitnessData-postFitness-400-schema">
+                <div id="responses-FitnessData-postFitness-schema-400">
                     <script>
                         $(document).ready(function() {
                           var schemaWrapper = {
@@ -2064,14 +2288,14 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                             }
 
                           var view = new JSONSchemaView(schema, 3);
-                          $('#responses-Fitness-postFitness-400-schema-data-input').val(JSON.stringify(schema));
-                          var result = $('#responses-Fitness-postFitness-schema-400');
+                          $('#responses-FitnessData-postFitness-400-schema-data-input').val(JSON.stringify(schema));
+                          var result = $('#responses-FitnessData-postFitness-schema-400');
                           result.empty();
                           result.append(view.render());
                         });
                 </script>
                 </div>
-                <input id='responses-Fitness-postFitness-400-schema-data-input' type='hidden' value=''></input>
+                <input id='responses-FitnessData-postFitness-400-schema-data-input' type='hidden' value=''></input>
             </div>
     </div>
 
@@ -2081,11 +2305,11 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                         <span>Example</span>
                         <select class="example-dropdown-select">
                                 <option data-toggle="tab"
-                                        value="#requests-Fitness-postFitness-400-example-example">example - application/json</option>
+                                        value="#requests-FitnessData-postFitness-400-example-example">example - application/json</option>
                         </select>
                     </label>
                         <div class="example-dropdown-value"
-                             id="requests-Fitness-postFitness-400-example-example">
+                             id="requests-FitnessData-postFitness-400-example-example">
                                 <div class="buttons-wrapper">
                                     <button data-action="copy"> Copy </button> <button data-action="expand"> Expand all </button><button data-action="collapse"> Collapse all </button>
                                 </div>
@@ -2099,24 +2323,24 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
     </div>
 </div>
 <script>
-  var responseFitness400_description = `If one or more request parameters don't comply with the specification`;
-  var responseFitness400_description_break = responseFitness400_description.indexOf('\n');
-  if (responseFitness400_description_break == -1) {
-    $("#examples-Fitness-postFitness-title-400").html("<span class='response-header-tab-handle'></span> <b>400</b> " + responseFitness400_description);
+  var responseFitnessData400_description = `If one or more request parameters don't comply with the specification`;
+  var responseFitnessData400_description_break = responseFitnessData400_description.indexOf('\n');
+  if (responseFitnessData400_description_break == -1) {
+    $("#examples-FitnessData-postFitness-title-400").html("<span class='response-header-tab-handle'></span> <b>400</b> " + responseFitnessData400_description);
   } else {
-    $("#examples-Fitness-postFitness-title-400").html("<span class='response-header-tab-handle'></span> <b>400</b> " + responseFitness400_description.substring(0, responseFitness400_description_break));
-    $("#examples-Fitness-postFitness-description-400").html(responseFitness400_description.substring(responseFitness400_description_break));
+    $("#examples-FitnessData-postFitness-title-400").html("<span class='response-header-tab-handle'></span> <b>400</b> " + responseFitnessData400_description.substring(0, responseFitnessData400_description_break));
+    $("#examples-FitnessData-postFitness-description-400").html(responseFitnessData400_description.substring(responseFitnessData400_description_break));
   }
 </script>
 
-                       <h3 class="response-header-tab collapsed" data-code="500" id="examples-Fitness-postFitness-title-500"></h3>
-<div class="response-content-block collapsed" data-code="500" id="examples-Fitness-postFitness-title-500-content">
-    <p id="examples-Fitness-postFitness-description-500" class="marked"></p>
-    <div class="exampleStyle" id="responses-Fitness-postFitness-500-wrapper" style='margin-bottom: 10px;'>
+                       <h3 class="response-header-tab collapsed" data-code="500" id="examples-FitnessData-postFitness-title-500"></h3>
+<div class="response-content-block collapsed" data-code="500" id="examples-FitnessData-postFitness-title-500-content">
+    <p id="examples-FitnessData-postFitness-description-500" class="marked"></p>
+    <div class="exampleStyle" id="responses-FitnessData-postFitness-500-wrapper" style='margin-bottom: 10px;'>
     <div class="left-side">
             <h3>Schema</h3>
-            <div class="schema-block" id="responses-Fitness-postFitness-500-schema">
-                <div id="responses-Fitness-postFitness-schema-500">
+            <div class="schema-block" id="responses-FitnessData-postFitness-500-schema">
+                <div id="responses-FitnessData-postFitness-schema-500">
                     <script>
                         $(document).ready(function() {
                           var schemaWrapper = {
@@ -2172,14 +2396,14 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                             }
 
                           var view = new JSONSchemaView(schema, 3);
-                          $('#responses-Fitness-postFitness-500-schema-data-input').val(JSON.stringify(schema));
-                          var result = $('#responses-Fitness-postFitness-schema-500');
+                          $('#responses-FitnessData-postFitness-500-schema-data-input').val(JSON.stringify(schema));
+                          var result = $('#responses-FitnessData-postFitness-schema-500');
                           result.empty();
                           result.append(view.render());
                         });
                 </script>
                 </div>
-                <input id='responses-Fitness-postFitness-500-schema-data-input' type='hidden' value=''></input>
+                <input id='responses-FitnessData-postFitness-500-schema-data-input' type='hidden' value=''></input>
             </div>
     </div>
 
@@ -2189,11 +2413,11 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                         <span>Example</span>
                         <select class="example-dropdown-select">
                                 <option data-toggle="tab"
-                                        value="#requests-Fitness-postFitness-500-example-example">example - application/json</option>
+                                        value="#requests-FitnessData-postFitness-500-example-example">example - application/json</option>
                         </select>
                     </label>
                         <div class="example-dropdown-value"
-                             id="requests-Fitness-postFitness-500-example-example">
+                             id="requests-FitnessData-postFitness-500-example-example">
                                 <div class="buttons-wrapper">
                                     <button data-action="copy"> Copy </button> <button data-action="expand"> Expand all </button><button data-action="collapse"> Collapse all </button>
                                 </div>
@@ -2207,26 +2431,26 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
     </div>
 </div>
 <script>
-  var responseFitness500_description = `If a runtime error occurs while processing the request`;
-  var responseFitness500_description_break = responseFitness500_description.indexOf('\n');
-  if (responseFitness500_description_break == -1) {
-    $("#examples-Fitness-postFitness-title-500").html("<span class='response-header-tab-handle'></span> <b>500</b> " + responseFitness500_description);
+  var responseFitnessData500_description = `If a runtime error occurs while processing the request`;
+  var responseFitnessData500_description_break = responseFitnessData500_description.indexOf('\n');
+  if (responseFitnessData500_description_break == -1) {
+    $("#examples-FitnessData-postFitness-title-500").html("<span class='response-header-tab-handle'></span> <b>500</b> " + responseFitnessData500_description);
   } else {
-    $("#examples-Fitness-postFitness-title-500").html("<span class='response-header-tab-handle'></span> <b>500</b> " + responseFitness500_description.substring(0, responseFitness500_description_break));
-    $("#examples-Fitness-postFitness-description-500").html(responseFitness500_description.substring(responseFitness500_description_break));
+    $("#examples-FitnessData-postFitness-title-500").html("<span class='response-header-tab-handle'></span> <b>500</b> " + responseFitnessData500_description.substring(0, responseFitnessData500_description_break));
+    $("#examples-FitnessData-postFitness-description-500").html(responseFitnessData500_description.substring(responseFitnessData500_description_break));
   }
 </script>
 
                     </article>
                   </div>
               </section>
-            <section id="api-Redeems">
-              <h1>Redeems</h1>
-                <div id="api-Redeems-postRedeemConfiguration">
-                  <article id="api-Redeems-postRedeemConfiguration-0" data-group="User" data-name="postRedeemConfiguration" data-version="0">
+            <section id="api-RedeemConfiguration">
+              <h1>RedeemConfiguration</h1>
+                <div id="api-RedeemConfiguration-postRedeemConfiguration">
+                  <article id="api-RedeemConfiguration-postRedeemConfiguration-0" data-group="User" data-name="postRedeemConfiguration" data-version="0">
                           <h1>postRedeemConfiguration</h1>
                           
-                    <p class="marked">Adds or updates a redeem</p>
+                    <p class="marked">Adds or updates a redeem Configuration</p>
                       <br/>
                           <div class="secured-by">
                               <h2>Secured by Backbase Access Control</h2>
@@ -2234,7 +2458,7 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                               
                               
                           </div>
-                      <pre class="prettyprint language-html prettyprinted"><code><span class="pln"><span  class="http-method" data-type="post">post</span>/client-api/v1/config/redeem</span></code></pre>
+                      <pre class="prettyprint language-html prettyprinted"><code><span class="pln"><span  class="http-method" data-type="post">post</span>/client-api/v1/config/redeemConfiguration</span></code></pre>
 
 
 
@@ -2242,20 +2466,20 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
 
 
                           <h2>Request Body Schema</h2>
-                              <div class="request-body" id="requests-redeem-item-postRedeemConfiguration--wrapper" style='margin-bottom: 10px;'>
+                              <div class="request-body" id="requests-redeem-configuration-postRedeemConfiguration--wrapper" style='margin-bottom: 10px;'>
     <p class="marked"></p>
     <div class="requests-wrapper">
         <div class="examples-tab-wrapper">
             <div class="exampleStyle">
-                <div class="left-side" id="requests-redeem-item-postRedeemConfiguration--schema" style="width: calc((100% + 64px) * 0.6 - 32px)" >
-                    <div id="requests-redeem-item-postRedeemConfiguration--schema-data">
+                <div class="left-side" id="requests-redeem-configuration-postRedeemConfiguration--schema" style="width: calc((100% + 64px) * 0.6 - 32px)" >
+                    <div id="requests-redeem-configuration-postRedeemConfiguration--schema-data">
                         <script>
                             $(document).ready(function() {
                                 var schemaWrapper = {
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/redeem-item"
+        "$ref" : "#/components/schemas/redeem-configuration"
       }
     }
   }
@@ -2300,14 +2524,14 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                                 }
 
                                 var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-                                $('#requests-redeem-item-postRedeemConfiguration--schema-data-input').val(JSON.stringify(schema));
-                                var result = $('#requests-redeem-item-postRedeemConfiguration--schema');
+                                $('#requests-redeem-configuration-postRedeemConfiguration--schema-data-input').val(JSON.stringify(schema));
+                                var result = $('#requests-redeem-configuration-postRedeemConfiguration--schema');
                                 result.empty();
                                 result.append(view.render());
                             });
                         </script>
                     </div>
-                    <input id='requests-redeem-item-postRedeemConfiguration--schema-data-input' type='hidden' value=''/>
+                    <input id='requests-redeem-configuration-postRedeemConfiguration--schema-data-input' type='hidden' value=''/>
                 </div>
 
                     <div class="dropdown-examples">
@@ -2316,11 +2540,11 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                             <span>Example</span>
                             <select class="example-dropdown-select">
                                     <option data-toggle="tab"
-                                            value="#requests-redeem-item-postRedeemConfiguration--example-example">example - application/json</option>
+                                            value="#requests-redeem-configuration-postRedeemConfiguration--example-example">example - application/json</option>
                             </select>
                         </label>
                             <div class="example-dropdown-value"
-                                 id="requests-redeem-item-postRedeemConfiguration--example-example">
+                                 id="requests-redeem-configuration-postRedeemConfiguration--example-example">
                                     <div class="buttons-wrapper">
                                         <button data-action="copy"> Copy </button> <button data-action="expand"> Expand all </button><button data-action="collapse"> Collapse all </button>
                                     </div>
@@ -2331,8 +2555,10 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
   },
   "criteriaName" : "criteriaName",
   "weight" : "weight",
+  "maximumPointsToBeRedeemed" : 6,
   "bankName" : "bankName",
   "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+  "minimumPointsToBeRedeemed" : 0,
   "equivalencePoints" : "equivalencePoints",
   "measurement" : "measurement",
   "updatedAt" : "2022-06-27"
@@ -2347,14 +2573,14 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
 
 
                       <h2>Responses</h2>
-                       <h3 class="response-header-tab " data-code="200" id="examples-Redeems-postRedeemConfiguration-title-200"></h3>
-<div class="response-content-block " data-code="200" id="examples-Redeems-postRedeemConfiguration-title-200-content">
-    <p id="examples-Redeems-postRedeemConfiguration-description-200" class="marked"></p>
-    <div class="exampleStyle" id="responses-Redeems-postRedeemConfiguration-200-wrapper" style='margin-bottom: 10px;'>
+                       <h3 class="response-header-tab " data-code="200" id="examples-RedeemConfiguration-postRedeemConfiguration-title-200"></h3>
+<div class="response-content-block " data-code="200" id="examples-RedeemConfiguration-postRedeemConfiguration-title-200-content">
+    <p id="examples-RedeemConfiguration-postRedeemConfiguration-description-200" class="marked"></p>
+    <div class="exampleStyle" id="responses-RedeemConfiguration-postRedeemConfiguration-200-wrapper" style='margin-bottom: 10px;'>
     <div class="left-side">
             <h3>Schema</h3>
-            <div class="schema-block" id="responses-Redeems-postRedeemConfiguration-200-schema">
-                <div id="responses-Redeems-postRedeemConfiguration-schema-200">
+            <div class="schema-block" id="responses-RedeemConfiguration-postRedeemConfiguration-200-schema">
+                <div id="responses-RedeemConfiguration-postRedeemConfiguration-schema-200">
                     <script>
                         $(document).ready(function() {
                           var schemaWrapper = {
@@ -2362,7 +2588,7 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/redeem-item"
+        "$ref" : "#/components/schemas/redeem-configuration"
       }
     }
   }
@@ -2407,14 +2633,14 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                             }
 
                           var view = new JSONSchemaView(schema, 3);
-                          $('#responses-Redeems-postRedeemConfiguration-200-schema-data-input').val(JSON.stringify(schema));
-                          var result = $('#responses-Redeems-postRedeemConfiguration-schema-200');
+                          $('#responses-RedeemConfiguration-postRedeemConfiguration-200-schema-data-input').val(JSON.stringify(schema));
+                          var result = $('#responses-RedeemConfiguration-postRedeemConfiguration-schema-200');
                           result.empty();
                           result.append(view.render());
                         });
                 </script>
                 </div>
-                <input id='responses-Redeems-postRedeemConfiguration-200-schema-data-input' type='hidden' value=''></input>
+                <input id='responses-RedeemConfiguration-postRedeemConfiguration-200-schema-data-input' type='hidden' value=''></input>
             </div>
     </div>
 
@@ -2422,24 +2648,24 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
     </div>
 </div>
 <script>
-  var responseRedeems200_description = `return general status response`;
-  var responseRedeems200_description_break = responseRedeems200_description.indexOf('\n');
-  if (responseRedeems200_description_break == -1) {
-    $("#examples-Redeems-postRedeemConfiguration-title-200").html("<span class='response-header-tab-handle'></span> <b>200</b> " + responseRedeems200_description);
+  var responseRedeemConfiguration200_description = `return general status response`;
+  var responseRedeemConfiguration200_description_break = responseRedeemConfiguration200_description.indexOf('\n');
+  if (responseRedeemConfiguration200_description_break == -1) {
+    $("#examples-RedeemConfiguration-postRedeemConfiguration-title-200").html("<span class='response-header-tab-handle'></span> <b>200</b> " + responseRedeemConfiguration200_description);
   } else {
-    $("#examples-Redeems-postRedeemConfiguration-title-200").html("<span class='response-header-tab-handle'></span> <b>200</b> " + responseRedeems200_description.substring(0, responseRedeems200_description_break));
-    $("#examples-Redeems-postRedeemConfiguration-description-200").html(responseRedeems200_description.substring(responseRedeems200_description_break));
+    $("#examples-RedeemConfiguration-postRedeemConfiguration-title-200").html("<span class='response-header-tab-handle'></span> <b>200</b> " + responseRedeemConfiguration200_description.substring(0, responseRedeemConfiguration200_description_break));
+    $("#examples-RedeemConfiguration-postRedeemConfiguration-description-200").html(responseRedeemConfiguration200_description.substring(responseRedeemConfiguration200_description_break));
   }
 </script>
 
-                       <h3 class="response-header-tab collapsed" data-code="400" id="examples-Redeems-postRedeemConfiguration-title-400"></h3>
-<div class="response-content-block collapsed" data-code="400" id="examples-Redeems-postRedeemConfiguration-title-400-content">
-    <p id="examples-Redeems-postRedeemConfiguration-description-400" class="marked"></p>
-    <div class="exampleStyle" id="responses-Redeems-postRedeemConfiguration-400-wrapper" style='margin-bottom: 10px;'>
+                       <h3 class="response-header-tab collapsed" data-code="400" id="examples-RedeemConfiguration-postRedeemConfiguration-title-400"></h3>
+<div class="response-content-block collapsed" data-code="400" id="examples-RedeemConfiguration-postRedeemConfiguration-title-400-content">
+    <p id="examples-RedeemConfiguration-postRedeemConfiguration-description-400" class="marked"></p>
+    <div class="exampleStyle" id="responses-RedeemConfiguration-postRedeemConfiguration-400-wrapper" style='margin-bottom: 10px;'>
     <div class="left-side">
             <h3>Schema</h3>
-            <div class="schema-block" id="responses-Redeems-postRedeemConfiguration-400-schema">
-                <div id="responses-Redeems-postRedeemConfiguration-schema-400">
+            <div class="schema-block" id="responses-RedeemConfiguration-postRedeemConfiguration-400-schema">
+                <div id="responses-RedeemConfiguration-postRedeemConfiguration-schema-400">
                     <script>
                         $(document).ready(function() {
                           var schemaWrapper = {
@@ -2495,14 +2721,14 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                             }
 
                           var view = new JSONSchemaView(schema, 3);
-                          $('#responses-Redeems-postRedeemConfiguration-400-schema-data-input').val(JSON.stringify(schema));
-                          var result = $('#responses-Redeems-postRedeemConfiguration-schema-400');
+                          $('#responses-RedeemConfiguration-postRedeemConfiguration-400-schema-data-input').val(JSON.stringify(schema));
+                          var result = $('#responses-RedeemConfiguration-postRedeemConfiguration-schema-400');
                           result.empty();
                           result.append(view.render());
                         });
                 </script>
                 </div>
-                <input id='responses-Redeems-postRedeemConfiguration-400-schema-data-input' type='hidden' value=''></input>
+                <input id='responses-RedeemConfiguration-postRedeemConfiguration-400-schema-data-input' type='hidden' value=''></input>
             </div>
     </div>
 
@@ -2512,11 +2738,11 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                         <span>Example</span>
                         <select class="example-dropdown-select">
                                 <option data-toggle="tab"
-                                        value="#requests-Redeems-postRedeemConfiguration-400-example-example">example - application/json</option>
+                                        value="#requests-RedeemConfiguration-postRedeemConfiguration-400-example-example">example - application/json</option>
                         </select>
                     </label>
                         <div class="example-dropdown-value"
-                             id="requests-Redeems-postRedeemConfiguration-400-example-example">
+                             id="requests-RedeemConfiguration-postRedeemConfiguration-400-example-example">
                                 <div class="buttons-wrapper">
                                     <button data-action="copy"> Copy </button> <button data-action="expand"> Expand all </button><button data-action="collapse"> Collapse all </button>
                                 </div>
@@ -2530,24 +2756,24 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
     </div>
 </div>
 <script>
-  var responseRedeems400_description = `If one or more request parameters don't comply with the specification`;
-  var responseRedeems400_description_break = responseRedeems400_description.indexOf('\n');
-  if (responseRedeems400_description_break == -1) {
-    $("#examples-Redeems-postRedeemConfiguration-title-400").html("<span class='response-header-tab-handle'></span> <b>400</b> " + responseRedeems400_description);
+  var responseRedeemConfiguration400_description = `If one or more request parameters don't comply with the specification`;
+  var responseRedeemConfiguration400_description_break = responseRedeemConfiguration400_description.indexOf('\n');
+  if (responseRedeemConfiguration400_description_break == -1) {
+    $("#examples-RedeemConfiguration-postRedeemConfiguration-title-400").html("<span class='response-header-tab-handle'></span> <b>400</b> " + responseRedeemConfiguration400_description);
   } else {
-    $("#examples-Redeems-postRedeemConfiguration-title-400").html("<span class='response-header-tab-handle'></span> <b>400</b> " + responseRedeems400_description.substring(0, responseRedeems400_description_break));
-    $("#examples-Redeems-postRedeemConfiguration-description-400").html(responseRedeems400_description.substring(responseRedeems400_description_break));
+    $("#examples-RedeemConfiguration-postRedeemConfiguration-title-400").html("<span class='response-header-tab-handle'></span> <b>400</b> " + responseRedeemConfiguration400_description.substring(0, responseRedeemConfiguration400_description_break));
+    $("#examples-RedeemConfiguration-postRedeemConfiguration-description-400").html(responseRedeemConfiguration400_description.substring(responseRedeemConfiguration400_description_break));
   }
 </script>
 
-                       <h3 class="response-header-tab collapsed" data-code="500" id="examples-Redeems-postRedeemConfiguration-title-500"></h3>
-<div class="response-content-block collapsed" data-code="500" id="examples-Redeems-postRedeemConfiguration-title-500-content">
-    <p id="examples-Redeems-postRedeemConfiguration-description-500" class="marked"></p>
-    <div class="exampleStyle" id="responses-Redeems-postRedeemConfiguration-500-wrapper" style='margin-bottom: 10px;'>
+                       <h3 class="response-header-tab collapsed" data-code="500" id="examples-RedeemConfiguration-postRedeemConfiguration-title-500"></h3>
+<div class="response-content-block collapsed" data-code="500" id="examples-RedeemConfiguration-postRedeemConfiguration-title-500-content">
+    <p id="examples-RedeemConfiguration-postRedeemConfiguration-description-500" class="marked"></p>
+    <div class="exampleStyle" id="responses-RedeemConfiguration-postRedeemConfiguration-500-wrapper" style='margin-bottom: 10px;'>
     <div class="left-side">
             <h3>Schema</h3>
-            <div class="schema-block" id="responses-Redeems-postRedeemConfiguration-500-schema">
-                <div id="responses-Redeems-postRedeemConfiguration-schema-500">
+            <div class="schema-block" id="responses-RedeemConfiguration-postRedeemConfiguration-500-schema">
+                <div id="responses-RedeemConfiguration-postRedeemConfiguration-schema-500">
                     <script>
                         $(document).ready(function() {
                           var schemaWrapper = {
@@ -2603,14 +2829,14 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                             }
 
                           var view = new JSONSchemaView(schema, 3);
-                          $('#responses-Redeems-postRedeemConfiguration-500-schema-data-input').val(JSON.stringify(schema));
-                          var result = $('#responses-Redeems-postRedeemConfiguration-schema-500');
+                          $('#responses-RedeemConfiguration-postRedeemConfiguration-500-schema-data-input').val(JSON.stringify(schema));
+                          var result = $('#responses-RedeemConfiguration-postRedeemConfiguration-schema-500');
                           result.empty();
                           result.append(view.render());
                         });
                 </script>
                 </div>
-                <input id='responses-Redeems-postRedeemConfiguration-500-schema-data-input' type='hidden' value=''></input>
+                <input id='responses-RedeemConfiguration-postRedeemConfiguration-500-schema-data-input' type='hidden' value=''></input>
             </div>
     </div>
 
@@ -2620,11 +2846,11 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
                         <span>Example</span>
                         <select class="example-dropdown-select">
                                 <option data-toggle="tab"
-                                        value="#requests-Redeems-postRedeemConfiguration-500-example-example">example - application/json</option>
+                                        value="#requests-RedeemConfiguration-postRedeemConfiguration-500-example-example">example - application/json</option>
                         </select>
                     </label>
                         <div class="example-dropdown-value"
-                             id="requests-Redeems-postRedeemConfiguration-500-example-example">
+                             id="requests-RedeemConfiguration-postRedeemConfiguration-500-example-example">
                                 <div class="buttons-wrapper">
                                     <button data-action="copy"> Copy </button> <button data-action="expand"> Expand all </button><button data-action="collapse"> Collapse all </button>
                                 </div>
@@ -2638,13 +2864,227 @@ json-schema-view[json-schema-view-dark].collapsed .toggle-handle {
     </div>
 </div>
 <script>
-  var responseRedeems500_description = `If a runtime error occurs while processing the request`;
-  var responseRedeems500_description_break = responseRedeems500_description.indexOf('\n');
-  if (responseRedeems500_description_break == -1) {
-    $("#examples-Redeems-postRedeemConfiguration-title-500").html("<span class='response-header-tab-handle'></span> <b>500</b> " + responseRedeems500_description);
+  var responseRedeemConfiguration500_description = `If a runtime error occurs while processing the request`;
+  var responseRedeemConfiguration500_description_break = responseRedeemConfiguration500_description.indexOf('\n');
+  if (responseRedeemConfiguration500_description_break == -1) {
+    $("#examples-RedeemConfiguration-postRedeemConfiguration-title-500").html("<span class='response-header-tab-handle'></span> <b>500</b> " + responseRedeemConfiguration500_description);
   } else {
-    $("#examples-Redeems-postRedeemConfiguration-title-500").html("<span class='response-header-tab-handle'></span> <b>500</b> " + responseRedeems500_description.substring(0, responseRedeems500_description_break));
-    $("#examples-Redeems-postRedeemConfiguration-description-500").html(responseRedeems500_description.substring(responseRedeems500_description_break));
+    $("#examples-RedeemConfiguration-postRedeemConfiguration-title-500").html("<span class='response-header-tab-handle'></span> <b>500</b> " + responseRedeemConfiguration500_description.substring(0, responseRedeemConfiguration500_description_break));
+    $("#examples-RedeemConfiguration-postRedeemConfiguration-description-500").html(responseRedeemConfiguration500_description.substring(responseRedeemConfiguration500_description_break));
+  }
+</script>
+
+                    </article>
+                  </div>
+              </section>
+            <section id="api-Subscription">
+              <h1>Subscription</h1>
+                <div id="api-Subscription-subscribe">
+                  <article id="api-Subscription-subscribe-0" data-group="User" data-name="subscribe" data-version="0">
+                          <h1>subscribe</h1>
+                          
+                    <p class="marked">Adds or updates a subscribe</p>
+                      <br/>
+                          <div class="secured-by">
+                              <h2>Secured by Backbase Access Control</h2>
+                              
+                              
+                              
+                          </div>
+                      <pre class="prettyprint language-html prettyprinted"><code><span class="pln"><span  class="http-method" data-type="post">post</span>/client-api/v1/clientSubscription</span></code></pre>
+
+
+
+
+
+
+                          <h2>Request Body Schema</h2>
+                              <div class="request-body" id="requests-subscription-subscribe--wrapper" style='margin-bottom: 10px;'>
+    <p class="marked"></p>
+    <div class="requests-wrapper">
+        <div class="examples-tab-wrapper">
+            <div class="exampleStyle">
+                <div class="left-side" id="requests-subscription-subscribe--schema" style="width: calc((100% + 64px) * 0.6 - 32px)" >
+                    <div id="requests-subscription-subscribe--schema-data">
+                        <script>
+                            $(document).ready(function() {
+                                var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/subscription"
+      }
+    }
+  }
+};
+                                var schema = findNode('schema', schemaWrapper.content).schema;
+
+                                if (!schema) {
+                                    schema = schemaWrapper.schema;
+                                }
+                                if (schema.$ref != null) {
+                                    schema = defsParser.$refs.get(schema.$ref);
+                                    if (schema.type === 'array' && schema.items != null && schema.items.$ref != null) {
+                                        schema.items = defsParser.$refs.get(schema.items.$ref);
+
+
+                                    }
+                                }else if (schema.type === 'array' && schema.items != null && schema.items.$ref != null) {
+                                    schema.items = defsParser.$refs.get(schema.items.$ref);
+                                } else {
+                                    schemaWrapper.definitions = Object.assign({}, defs);
+                                    $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                        console.log(err);
+                                    });
+                                }
+
+                                if (schema && schema.allOf) {
+                                    schema.allOf = schema.allOf.map( i =>  i.$ref ? defsParser.$refs.get(i.$ref) : i).filter(Boolean);
+                                    schema = mergeAllOf(schema,  {
+                                        resolvers: {
+                                            defaultResolver: mergeAllOf.options.resolvers.title
+                                        }
+                                    });
+                                }
+
+                                if (schema.items && schema.items.allOf) {
+                                    schema.items.allOf = schema.items.allOf.map( i =>  i.$ref ? defsParser.$refs.get(i.$ref) : i).filter(Boolean);
+                                    schema.items = mergeAllOf(schema.items,  {
+                                        resolvers: {
+                                            defaultResolver: mergeAllOf.options.resolvers.title
+                                        }
+                                    });
+                                }
+
+                                var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+                                $('#requests-subscription-subscribe--schema-data-input').val(JSON.stringify(schema));
+                                var result = $('#requests-subscription-subscribe--schema');
+                                result.empty();
+                                result.append(view.render());
+                            });
+                        </script>
+                    </div>
+                    <input id='requests-subscription-subscribe--schema-data-input' type='hidden' value=''/>
+                </div>
+
+                    <div class="dropdown-examples">
+                        <h2>Request examples</h2>
+                        <label>
+                            <span>Example</span>
+                            <select class="example-dropdown-select">
+                                    <option data-toggle="tab"
+                                            value="#requests-subscription-subscribe--example-example">example - application/json</option>
+                            </select>
+                        </label>
+                            <div class="example-dropdown-value"
+                                 id="requests-subscription-subscribe--example-example">
+                                    <div class="buttons-wrapper">
+                                        <button data-action="copy"> Copy </button> <button data-action="expand"> Expand all </button><button data-action="collapse"> Collapse all </button>
+                                    </div>
+                                    <div class="json-viewer ">{
+  "deviceType" : "Android",
+  "createdAt" : "2022-06-27",
+  "additions" : {
+    "key" : "additions"
+  },
+  "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+  "deviceId" : "deviceId",
+  "deviceName" : "deviceName",
+  "deviceStatus" : "ACTIVE",
+  "updatedAt" : "2022-06-27"
+}</div>
+                            </div>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+                      <h2>Responses</h2>
+                       <h3 class="response-header-tab " data-code="200" id="examples-Subscription-subscribe-title-200"></h3>
+<div class="response-content-block " data-code="200" id="examples-Subscription-subscribe-title-200-content">
+    <p id="examples-Subscription-subscribe-description-200" class="marked"></p>
+    <div class="exampleStyle" id="responses-Subscription-subscribe-200-wrapper" style='margin-bottom: 10px;'>
+    <div class="left-side">
+            <h3>Schema</h3>
+            <div class="schema-block" id="responses-Subscription-subscribe-200-schema">
+                <div id="responses-Subscription-subscribe-schema-200">
+                    <script>
+                        $(document).ready(function() {
+                          var schemaWrapper = {
+  "description" : "return general status response",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/subscription"
+      }
+    }
+  }
+};
+                          var schema = findNode('schema', schemaWrapper.content).schema;
+
+                          if (!schema) {
+                            schema = schemaWrapper.schema;
+                          }
+                          if (schema.$ref != null) {
+                            schema = defsParser.$refs.get(schema.$ref);
+                            if (schema.type === 'array' && schema.items != null && schema.items.$ref != null) {
+                                schema.items = defsParser.$refs.get(schema.items.$ref);
+
+
+                            }
+                          }else if (schema.type === 'array' && schema.items != null && schema.items.$ref != null) {
+                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                          } else {
+                            schemaWrapper.definitions = Object.assign({}, defs);
+                            $RefParser.dereference(schemaWrapper).catch(function(err) {
+                              console.log(err);
+                            });
+                          }
+
+                          if (schema && schema.allOf) {
+                              schema.allOf = schema.allOf.map( i =>  i.$ref ? defsParser.$refs.get(i.$ref) : i).filter(Boolean);
+                              schema = mergeAllOf(schema,  {
+                                resolvers: {
+                                  defaultResolver: mergeAllOf.options.resolvers.title
+                                }
+                              });
+                            }
+
+                          if (schema.items && schema.items.allOf) {
+                              schema.items.allOf = schema.items.allOf.map( i =>  i.$ref ? defsParser.$refs.get(i.$ref) : i).filter(Boolean);
+                              schema.items = mergeAllOf(schema.items,  {
+                                resolvers: {
+                                  defaultResolver: mergeAllOf.options.resolvers.title
+                                }
+                              });
+                            }
+
+                          var view = new JSONSchemaView(schema, 3);
+                          $('#responses-Subscription-subscribe-200-schema-data-input').val(JSON.stringify(schema));
+                          var result = $('#responses-Subscription-subscribe-schema-200');
+                          result.empty();
+                          result.append(view.render());
+                        });
+                </script>
+                </div>
+                <input id='responses-Subscription-subscribe-200-schema-data-input' type='hidden' value=''></input>
+            </div>
+    </div>
+
+
+    </div>
+</div>
+<script>
+  var responseSubscription200_description = `return general status response`;
+  var responseSubscription200_description_break = responseSubscription200_description.indexOf('\n');
+  if (responseSubscription200_description_break == -1) {
+    $("#examples-Subscription-subscribe-title-200").html("<span class='response-header-tab-handle'></span> <b>200</b> " + responseSubscription200_description);
+  } else {
+    $("#examples-Subscription-subscribe-title-200").html("<span class='response-header-tab-handle'></span> <b>200</b> " + responseSubscription200_description.substring(0, responseSubscription200_description_break));
+    $("#examples-Subscription-subscribe-description-200").html(responseSubscription200_description.substring(responseSubscription200_description_break));
   }
 </script>
 
@@ -2843,6 +3283,35 @@ h={};g()}};typeof define==="function"&&define.amd&&define("google-code-prettify"
   <script>
     // Script section to load models into a JS Var
     var defs = {}
+    defs["deviceActivation"] = {
+  "required" : [ "deviceId" ],
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "deviceId" : {
+      "type" : "string",
+      "description" : "Device Serial number"
+    },
+    "createdAt" : {
+      "pattern" : "yyyy-MM-dd HH:mm:ss",
+      "type" : "string",
+      "description" : "Create date",
+      "example" : "2022-06-27"
+    },
+    "updatedAt" : {
+      "pattern" : "yyyy-MM-dd HH:mm:ss",
+      "type" : "string",
+      "description" : "Updated date",
+      "example" : "2022-06-27"
+    },
+    "additions" : {
+      "$ref" : "#/components/schemas/additions"
+    }
+  }
+};
     defs["error"] = {
   "title" : "Error",
   "required" : [ "key", "message" ],
@@ -2891,9 +3360,8 @@ h={};g()}};typeof define==="function"&&define.amd&&define("google-code-prettify"
     }
   }
 };
-    defs["fitness-item"] = {
-  "title" : "Fitness",
-  "required" : [ "fromDate", "numberOfSteps", "toDate" ],
+    defs["fitness-data"] = {
+  "required" : [ "deviceId", "fromDate", "numberOfSteps", "toDate" ],
   "type" : "object",
   "properties" : {
     "id" : {
@@ -2907,6 +3375,9 @@ h={};g()}};typeof define==="function"&&define.amd&&define("google-code-prettify"
       "type" : "string"
     },
     "toDate" : {
+      "type" : "string"
+    },
+    "deviceId" : {
       "type" : "string"
     },
     "createdAt" : {
@@ -2926,26 +3397,22 @@ h={};g()}};typeof define==="function"&&define.amd&&define("google-code-prettify"
     }
   }
 };
-    defs["fitnessData"] = {
+    defs["healthData"] = {
   "type" : "object",
   "properties" : {
-    "fitnness" : {
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/components/schemas/fitness-item"
-      }
+    "fitnnessData" : {
+      "$ref" : "#/components/schemas/fitness-data"
     },
-    "redeem" : {
-      "$ref" : "#/components/schemas/redeem-item"
+    "redeemConfiguration" : {
+      "$ref" : "#/components/schemas/redeem-configuration"
     },
     "additions" : {
       "$ref" : "#/components/schemas/additions"
     }
   }
 };
-    defs["redeem-item"] = {
-  "title" : "Redeem",
-  "required" : [ "criteriaName", "equivalencePoints", "measurement" ],
+    defs["redeem-configuration"] = {
+  "required" : [ "criteriaName", "equivalencePoints", "maximumPointsToBeRedeemed", "measurement", "minimumPointsToBeRedeemed" ],
   "type" : "object",
   "properties" : {
     "id" : {
@@ -2966,6 +3433,12 @@ h={};g()}};typeof define==="function"&&define.amd&&define("google-code-prettify"
     },
     "equivalencePoints" : {
       "type" : "string"
+    },
+    "minimumPointsToBeRedeemed" : {
+      "type" : "integer"
+    },
+    "maximumPointsToBeRedeemed" : {
+      "type" : "integer"
     },
     "createdAt" : {
       "pattern" : "yyyy-MM-dd HH:mm:ss",
@@ -2997,6 +3470,47 @@ h={};g()}};typeof define==="function"&&define.amd&&define("google-code-prettify"
       "minLength" : 1,
       "type" : "string",
       "description" : "Error summary"
+    }
+  }
+};
+    defs["subscription"] = {
+  "required" : [ "deviceId" ],
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "deviceId" : {
+      "type" : "string",
+      "description" : "Device Serial number"
+    },
+    "deviceType" : {
+      "type" : "string",
+      "description" : "Device Operating System",
+      "enum" : [ "Android", "IOS" ]
+    },
+    "deviceName" : {
+      "type" : "string"
+    },
+    "deviceStatus" : {
+      "type" : "string",
+      "enum" : [ "ACTIVE", "DEACTIVATE" ]
+    },
+    "createdAt" : {
+      "pattern" : "yyyy-MM-dd HH:mm:ss",
+      "type" : "string",
+      "description" : "Create date",
+      "example" : "2022-06-27"
+    },
+    "updatedAt" : {
+      "pattern" : "yyyy-MM-dd HH:mm:ss",
+      "type" : "string",
+      "description" : "Updated date",
+      "example" : "2022-06-27"
+    },
+    "additions" : {
+      "$ref" : "#/components/schemas/additions"
     }
   }
 };

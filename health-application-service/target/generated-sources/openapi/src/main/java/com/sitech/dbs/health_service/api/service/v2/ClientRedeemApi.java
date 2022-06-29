@@ -12,7 +12,7 @@ Boat Generator configuration:
 package com.sitech.dbs.health_service.api.service.v2;
 
 import com.sitech.dbs.health_service.api.service.v2.model.FitnessData;
-import com.sitech.dbs.health_service.api.service.v2.model.FitnessItem;
+import com.sitech.dbs.health_service.api.service.v2.model.HealthData;
 import java.util.Set;
 import java.util.LinkedHashSet;
 import io.swagger.annotations.*;
@@ -37,7 +37,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "com.backbase.oss.codegen.java.BoatSpringCodeGen", date = "2022-06-28T11:40:27.758410200+03:00[Asia/Amman]")
+@javax.annotation.Generated(value = "com.backbase.oss.codegen.java.BoatSpringCodeGen", date = "2022-06-29T12:54:44.857345300+03:00[Asia/Amman]")
 @Api(value = "ClientRedeem", description = "the ClientRedeem API")
 public interface ClientRedeemApi {
 
@@ -45,20 +45,20 @@ public interface ClientRedeemApi {
      * POST /client-api/v1/clientRedeem
      * Adds or updates a redeem
      *
-     * @param fitnessItem  (optional)
+     * @param fitnessData  (optional)
      * @return return general status response (status code 200)
      */
-    @ApiOperation(value = "", nickname = "doRedeem", notes = "Adds or updates a redeem", response = FitnessData.class, tags={ "clientRedeem", })
+    @ApiOperation(value = "", nickname = "doRedeem", notes = "Adds or updates a redeem", response = HealthData.class, tags={ "clientRedeem", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "return general status response", response = FitnessData.class) })
+        @ApiResponse(code = 200, message = "return general status response", response = HealthData.class) })
     @RequestMapping(value = "/client-api/v1/clientRedeem",
         produces = { "application/json" }, 
         consumes = { "application/json" },
         method = RequestMethod.POST)
-    ResponseEntity<FitnessData> doRedeem(
+    ResponseEntity<HealthData> doRedeem(
             @ApiParam(value = ""  )
             @Valid
-            @RequestBody(required = false) FitnessItem fitnessItem
+            @RequestBody(required = false) FitnessData fitnessData
 
     );
 

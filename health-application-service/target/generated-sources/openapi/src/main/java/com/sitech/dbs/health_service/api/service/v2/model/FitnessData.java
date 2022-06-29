@@ -13,14 +13,12 @@ package com.sitech.dbs.health_service.api.service.v2.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.sitech.dbs.health_service.api.service.v2.model.FitnessItem;
-import com.sitech.dbs.health_service.api.service.v2.model.RedeemItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -31,65 +29,172 @@ import com.fasterxml.jackson.annotation.*;
 /**
  * FitnessData
  */
-@javax.annotation.Generated(value = "com.backbase.oss.codegen.java.BoatSpringCodeGen", date = "2022-06-28T11:40:27.758410200+03:00[Asia/Amman]")
+@javax.annotation.Generated(value = "com.backbase.oss.codegen.java.BoatSpringCodeGen", date = "2022-06-29T12:54:44.857345300+03:00[Asia/Amman]")
 
 public class FitnessData 
  {
-    @JsonProperty("fitnness")
-    private List<FitnessItem> fitnness = null;
+    @JsonProperty("id")
+    private  UUID id;
 
-    @JsonProperty("redeem")
-    private  RedeemItem redeem;
+    @JsonProperty("numberOfSteps")
+    private  String numberOfSteps;
+
+    @JsonProperty("fromDate")
+    private  String fromDate;
+
+    @JsonProperty("toDate")
+    private  String toDate;
+
+    @JsonProperty("deviceId")
+    private  String deviceId;
+
+    @JsonProperty("createdAt")
+    private @Pattern(regexp="yyyy-MM-dd HH:mm:ss")  String createdAt;
+
+    @JsonProperty("updatedAt")
+    private @Pattern(regexp="yyyy-MM-dd HH:mm:ss")  String updatedAt;
 
     @JsonProperty("additions")
     private Map<String, String> additions = null;
 
 
-    public FitnessData fitnness(List<FitnessItem> fitnness) {
-        this.fitnness = fitnness;
-        return this;
-    }
-
-    public FitnessData addFitnnessItem(FitnessItem fitnnessItem) {
-        if (this.fitnness == null) {
-            this.fitnness = new ArrayList<>();
-        }
-        this.fitnness.add(fitnnessItem);
+    public FitnessData id(UUID id) {
+        this.id = id;
         return this;
     }
 
     /**
-     * Get fitnness
-     * @return fitnness
+     * Get id
+     * @return id
      */
     @ApiModelProperty(value = "")
     @Valid 
-    public List<FitnessItem> getFitnness() {
-        return fitnness;
+    public  UUID getId() {
+        return id;
     }
 
-    public void setFitnness(List<FitnessItem> fitnness) {
-        this.fitnness = fitnness;
+    public void setId( UUID id) {
+        this.id = id;
     }
 
 
-    public FitnessData redeem(RedeemItem redeem) {
-        this.redeem = redeem;
+    public FitnessData numberOfSteps(String numberOfSteps) {
+        this.numberOfSteps = numberOfSteps;
         return this;
     }
 
     /**
-     * Get redeem
-     * @return redeem
+     * Get numberOfSteps
+     * @return numberOfSteps
      */
-    @ApiModelProperty(value = "")
-    @Valid 
-    public  RedeemItem getRedeem() {
-        return redeem;
+    @ApiModelProperty(required = true, value = "")
+    @NotNull 
+    public  String getNumberOfSteps() {
+        return numberOfSteps;
     }
 
-    public void setRedeem( RedeemItem redeem) {
-        this.redeem = redeem;
+    public void setNumberOfSteps( String numberOfSteps) {
+        this.numberOfSteps = numberOfSteps;
+    }
+
+
+    public FitnessData fromDate(String fromDate) {
+        this.fromDate = fromDate;
+        return this;
+    }
+
+    /**
+     * Get fromDate
+     * @return fromDate
+     */
+    @ApiModelProperty(required = true, value = "")
+    @NotNull 
+    public  String getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate( String fromDate) {
+        this.fromDate = fromDate;
+    }
+
+
+    public FitnessData toDate(String toDate) {
+        this.toDate = toDate;
+        return this;
+    }
+
+    /**
+     * Get toDate
+     * @return toDate
+     */
+    @ApiModelProperty(required = true, value = "")
+    @NotNull 
+    public  String getToDate() {
+        return toDate;
+    }
+
+    public void setToDate( String toDate) {
+        this.toDate = toDate;
+    }
+
+
+    public FitnessData deviceId(String deviceId) {
+        this.deviceId = deviceId;
+        return this;
+    }
+
+    /**
+     * Get deviceId
+     * @return deviceId
+     */
+    @ApiModelProperty(required = true, value = "")
+    @NotNull 
+    public  String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId( String deviceId) {
+        this.deviceId = deviceId;
+    }
+
+
+    public FitnessData createdAt(String createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    /**
+     * Create date
+     * @return createdAt
+     */
+    @ApiModelProperty(example = "2022-06-27", value = "Create date")
+    @Pattern(regexp="yyyy-MM-dd HH:mm:ss") 
+    public @Pattern(regexp="yyyy-MM-dd HH:mm:ss")  String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(@Pattern(regexp="yyyy-MM-dd HH:mm:ss")  String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+
+    public FitnessData updatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+        return this;
+    }
+
+    /**
+     * Updated date
+     * @return updatedAt
+     */
+    @ApiModelProperty(example = "2022-06-27", value = "Updated date")
+    @Pattern(regexp="yyyy-MM-dd HH:mm:ss") 
+    public @Pattern(regexp="yyyy-MM-dd HH:mm:ss")  String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(@Pattern(regexp="yyyy-MM-dd HH:mm:ss")  String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
 
@@ -132,16 +237,26 @@ public class FitnessData
             return false;
         }
         FitnessData fitnessData = (FitnessData) o;
-        return Objects.equals(this.fitnness, fitnessData.fitnness) &&
-                Objects.equals(this.redeem, fitnessData.redeem) &&
+        return Objects.equals(this.id, fitnessData.id) &&
+                Objects.equals(this.numberOfSteps, fitnessData.numberOfSteps) &&
+                Objects.equals(this.fromDate, fitnessData.fromDate) &&
+                Objects.equals(this.toDate, fitnessData.toDate) &&
+                Objects.equals(this.deviceId, fitnessData.deviceId) &&
+                Objects.equals(this.createdAt, fitnessData.createdAt) &&
+                Objects.equals(this.updatedAt, fitnessData.updatedAt) &&
                 Objects.equals(this.additions, fitnessData.additions);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(
-            fitnness,
-            redeem,
+            id,
+            numberOfSteps,
+            fromDate,
+            toDate,
+            deviceId,
+            createdAt,
+            updatedAt,
             additions
         );
     }
@@ -151,8 +266,13 @@ public class FitnessData
         StringBuilder sb = new StringBuilder();
         sb.append("class FitnessData {\n");
         
-        sb.append("        fitnness: ").append(toIndentedString(fitnness)).append("\n");
-        sb.append("        redeem: ").append(toIndentedString(redeem)).append("\n");
+        sb.append("        id: ").append(toIndentedString(id)).append("\n");
+        sb.append("        numberOfSteps: ").append(toIndentedString(numberOfSteps)).append("\n");
+        sb.append("        fromDate: ").append(toIndentedString(fromDate)).append("\n");
+        sb.append("        toDate: ").append(toIndentedString(toDate)).append("\n");
+        sb.append("        deviceId: ").append(toIndentedString(deviceId)).append("\n");
+        sb.append("        createdAt: ").append(toIndentedString(createdAt)).append("\n");
+        sb.append("        updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
         sb.append("        additions: ").append(toIndentedString(additions)).append("\n");
         sb.append("}");
         return sb.toString();
