@@ -13,7 +13,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-06-29T12:54:48+0300",
+    date = "2022-07-05T09:25:14+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 11.0.15 (Amazon.com Inc.)"
 )
 public class SubscriptionMapperImpl implements SubscriptionMapper {

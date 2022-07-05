@@ -13,13 +13,12 @@ import com.sitech.health.util.Translator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 public class SubscriptionServiceImpl implements SubscriptionService {
 
@@ -60,10 +59,23 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         fitnessDataRepository.save(fitnessData);
     }
 
-    public com.sitech.dbs.health_service.api.service.v2.model.Subscription activateDevice(com.sitech.dbs.health_service.api.service.v2.model.Subscription sub) {
-//        Subscription entity = subscriptionRepository.findById(sub.getId().toString()).get();
-//        entity.setDeviceStatus(DeviceStatus.ACTIVE);
-//        Subscription savedEntity = subscriptionRepository.save(entity);
+    public ResponseEntity<com.sitech.dbs.health_service.api.service.v2.model.Subscription> activateDeactivateDevice(com.sitech.dbs.health_service.api.service.v2.model.Subscription subscription, boolean activate) {
+        Subscription entity = subscriptionRepository.findById(subscription.getId().toString()).get();
+        if (Objects.nonNull(entity)) {
+            if (activate) {
+                entity.setDeviceStatus(DeviceStatus.ACTIVE);
+            } else {
+                entity.setDeviceStatus(DeviceStatus.DEACTIVATE);
+            }
+            Subscription savedEntity = subscriptionRepository.save(entity);
+            return ResponseEntity.status(HttpStatus.OK).body(SubscriptionMapper.INSTANCE.entityToDto(savedEntity));
+        }
+        throw new GenericErrorException(String.format("Device %s Not Valid.", subscription.getDeviceId()));
+    }
+}
+
+
+
 //
 //        //////////////////////////
 //
@@ -86,6 +98,4 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 //        //////////////////////////
 //
 //        return SubscriptionMapper.INSTANCE.entityToDto(savedEntity);
-        return null;
-    }
-}
+//            return null;

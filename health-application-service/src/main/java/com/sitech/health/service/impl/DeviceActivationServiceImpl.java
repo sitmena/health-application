@@ -12,6 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -27,28 +30,44 @@ public class DeviceActivationServiceImpl implements DeviceActivationService {
     @Override
     public ResponseEntity<DeviceActivation> activateDevice(UserContextDto userContextLite, String requestedLanguage, DeviceActivation deviceActivation) {
 
-
         ResponseEntity<List<Subscription>> subLst = subscriptionService.getCustomerSubscription(userContextLite, requestedLanguage);
         List<Subscription> lst = subLst.getBody();
         Predicate<Subscription> isDeviceIdValid = subscript -> deviceActivation.getDeviceId().equals(subscript.getDeviceId());
+        Optional<Subscription> subscribed = lst.stream().filter(isDeviceIdValid).findAny();
 
-        Predicate<Subscription> isDeviceActive = subscript -> subscript.getDeviceStatus().getValue() == DeviceStatus.ACTIVE.name();
+        if(!subscribed.isPresent()){
+            throw new GenericErrorException(String.format("Device %s Not Valid.", deviceActivation.getDeviceId()));
+        }else{
+            Map<Boolean, List<Subscription>> activeDeactivateLst = lst.stream().collect(Collectors.partitioningBy(subObject ->  subObject.getDeviceStatus().name().equals(DeviceStatus.ACTIVE.name())));
+            List<Subscription> activeLst = activeDeactivateLst.get(true);
 
-        Subscription subscription = lst.stream()
-                .filter(isDeviceIdValid)
-                .findAny()
-                .orElseThrow(() -> new GenericErrorException(String.format("Device %s Not Valid.", deviceActivation.getDeviceId())));
+            if(activeLst.size() >= 1 ){
+                for (Subscription subscription: activeLst ) {
+                    if(subscription.getDeviceId().equals(deviceActivation.getDeviceId())){
+                        subscriptionService.activateDeactivateDevice(subscription,true);
+                    }else {
+                        subscriptionService.activateDeactivateDevice(subscription,false);
+                    }
+                }
+            }
+        }
 
-
-        List<Subscription> deActivateLst = lst.stream()
-                .filter(subscript -> subscript.getDeviceStatus().getValue() != DeviceStatus.ACTIVE.name())
-                .collect(Collectors.toList());
-
-
-        subscriptionService.activateDevice(subscription);
+//        List<Subscription> deActivateLst = lst.stream()
+//                .filter(subscript -> subscript.getDeviceStatus().getValue() != DeviceStatus.ACTIVE.name())
+//                .collect(Collectors.toList());
+//
+//
+////        subscriptionService.activateDevice(subscription);
         return null;
     }
 
+
+    //        Predicate<Subscription> isDeviceActive = subscript -> subscript.getDeviceStatus().getValue() == DeviceStatus.ACTIVE.name();
+
+//        Subscription subscription = lst.stream()
+//                .filter(isDeviceIdValid)
+//                .findAny()
+//                .orElseThrow(() -> new GenericErrorException(String.format("Device %s Not Valid.", deviceActivation.getDeviceId())));
 
     //.collect(Collectors.toList());
 
