@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Fitness_data")
+@Table(name = "fitness_data")
 @Data
 @EntityListeners(AuditingEntityListener.class)
 public class FitnessData {
@@ -20,17 +20,23 @@ public class FitnessData {
     @GeneratedValue
     @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
+    @NotNull(message = "Number Of Steps is mandatory")
     @Column(name = "number_of_steps")
     private String numberOfSteps;
     @Column(name = "fromDate")
+    @NotNull(message = "From Date is mandatory")
     private String fromDate;
     @Column(name = "toDate")
+    @NotNull(message = "To Date is mandatory")
     private String toDate;
+    @Column(name = "device_id")
+    @NotNull(message = "Device Id is mandatory")
+    private String deviceId;
     @Column(name = "bank_id")
-    @NotNull
+    @NotNull(message = "Bank Id is mandatory")
     private String bankId;
     @Column(name = "customer_id")
-    @NotNull
+    @NotNull(message = "Customer Id is mandatory")
     private String customerId;
     @CreatedDate
     @Column(name = "created_at")

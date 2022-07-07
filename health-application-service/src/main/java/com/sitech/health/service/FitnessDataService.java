@@ -10,5 +10,7 @@ public interface FitnessDataService {
 
     ResponseEntity<HealthData> getFitnessByCustomerId(String customerId);
 
+    ResponseEntity<HealthData> findFirstByCustomerIdAndDeviceIdOrderByCreatedAtDesc(String customerId , String deviceId);
+
     ResponseEntity<HealthData> postFitness(UserContextDto userContextLite, String requestedLanguage, FitnessData fitnessItem);
 }

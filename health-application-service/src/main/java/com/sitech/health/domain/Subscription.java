@@ -1,6 +1,7 @@
 package com.sitech.health.domain;
 
 import lombok.Data;
+import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -17,6 +18,7 @@ public class Subscription {
     @Id
     @GeneratedValue
     @Column(name = "id")
+    @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id;
     @Column(name = "bank_id")
     private String bankId;

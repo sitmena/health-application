@@ -14,6 +14,7 @@ import com.sitech.health.repository.FitnessDataRepository;
 import com.sitech.health.repository.RedeemConfigurationRepository;
 import com.sitech.health.service.FitnessDataService;
 import com.sitech.health.util.Translator;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +23,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class FitnessDataServiceImpl implements FitnessDataService {
 
     @Autowired
@@ -39,7 +40,21 @@ public class FitnessDataServiceImpl implements FitnessDataService {
 
     @Override
     public ResponseEntity<HealthData> getFitnessByCustomerId(String customerId) {
-        com.sitech.health.domain.FitnessData resultFitnessData = fitnessRepository.findFirstByCustomerIdOrderByIdDesc(customerId);
+        com.sitech.health.domain.FitnessData resultFitnessData = fitnessRepository.findFirstByCustomerIdOrderByCreatedAtDesc(customerId);
+        HealthData healthData = new HealthData();
+        if (!Objects.isNull(resultFitnessData)) {
+            RedeemConfiguration redeemConfig = RedeemConfigurationMapper.INSTANCE.entityToDto(redeemRepository.findByBankId(resultFitnessData.getBankId()));
+            healthData.setFitnnessData(FitnessDataMapper.INSTANCE.entityToDto(resultFitnessData));
+            healthData.setRedeemConfiguration(redeemConfig);
+            return ResponseEntity.status(HttpStatus.OK).body(healthData);
+        } else {
+            throw new GenericErrorException(translator.getTranslatedKey(ServiceConstants.ERROR_IN_PERSIST_DATA, "jpa.persist.data.error.title", "jpa.persist.data.error.message", this.lang));
+        }
+    }
+
+    @Override
+    public ResponseEntity<HealthData> findFirstByCustomerIdAndDeviceIdOrderByCreatedAtDesc(String customerId, String deviceId) {
+        com.sitech.health.domain.FitnessData resultFitnessData = fitnessRepository.findFirstByCustomerIdAndDeviceIdOrderByCreatedAtDesc(customerId,deviceId);
         HealthData healthData = new HealthData();
         if (!Objects.isNull(resultFitnessData)) {
             RedeemConfiguration redeemConfig = RedeemConfigurationMapper.INSTANCE.entityToDto(redeemRepository.findByBankId(resultFitnessData.getBankId()));
@@ -76,9 +91,15 @@ public class FitnessDataServiceImpl implements FitnessDataService {
         Predicate<Subscription> isDeviceIdValid = subscript -> fitnessData.getDeviceId().equals(subscript.getDeviceId());
         Predicate<Subscription> isDeviceActive = subscript -> subscript.getDeviceStatus().getValue() == DeviceStatus.ACTIVE.name();
         Subscription subscription = lst.stream()
-               .filter( isDeviceIdValid.and(isDeviceActive) )
+                .filter(isDeviceIdValid.and(isDeviceActive))
                 .findAny()
-                .orElseThrow(() -> new GenericErrorException(String.format("Device %s Not Activated.", fitnessData.getDeviceId())));
+                .orElseThrow(() ->
+                        new GenericErrorException(
+                                translator.getTranslatedKey(
+                                        ServiceConstants.DEVICE_NOT_ACTIVATED_ERROR, "device.not.activated.error.title", "device.not.activated.error.message", this.lang)
+                        )
+
+                );
         return true;
     }
 }

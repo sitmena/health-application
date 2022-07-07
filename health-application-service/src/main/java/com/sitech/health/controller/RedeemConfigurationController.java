@@ -28,6 +28,7 @@ public class RedeemConfigurationController implements RedeemConfigurationApi {
 
     @Override
     public ResponseEntity<RedeemConfiguration> postRedeemConfiguration(RedeemConfiguration redeemConfiguration) {
+        log.info("Start Calling Redeem Config [ {} ]" , redeemConfiguration.toString());
         UserContextDto userContextLite = userContextService.getUserContextLite();
         return redeemService.postRedeem(userContextLite , languageUtil.getRequestedLanguage(httpServletRequest) , redeemConfiguration);
     }

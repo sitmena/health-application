@@ -13,6 +13,7 @@ import com.sitech.health.service.CustomerRedeemService;
 import com.sitech.health.service.FitnessDataService;
 import com.sitech.health.service.RedeemConfigurationService;
 import com.sitech.health.util.Translator;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,9 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+
 @Service
+@Slf4j
 public class CustomerRedeemServiceImpl implements CustomerRedeemService {
 
     @Autowired
@@ -34,6 +37,12 @@ public class CustomerRedeemServiceImpl implements CustomerRedeemService {
     private String lang;
     @Autowired
     private Translator translator;
+
+//    public CustomerRedeemServiceImpl(FitnessDataService fitnessDataService, RedeemConfigurationService redeemConfigurationService, CustomerRedeemsRepository customerRedeemsRepository) {
+//        this.fitnessDataService = fitnessDataService;
+//        this.redeemConfigurationService = redeemConfigurationService;
+//        this.customerRedeemsRepository = customerRedeemsRepository;
+//    }
 
     @Override
     public ResponseEntity<HealthData> doRedeem(UserContextDto userContextLite, String requestedLanguage, com.sitech.dbs.health_service.api.service.v2.model.FitnessData fitnessItem) {
@@ -57,17 +66,19 @@ public class CustomerRedeemServiceImpl implements CustomerRedeemService {
             BigDecimal numberOfSteps = new BigDecimal(fitnessData.getNumberOfSteps());
             BigDecimal redeemWeight = new BigDecimal(redeemConfiguration.getWeight());
             BigDecimal redeemEquivalencePoints = new BigDecimal(redeemConfiguration.getEquivalencePoints());
-            BigDecimal totalPoints = numberOfSteps.divide(redeemWeight);
+            BigDecimal totalPoints = (numberOfSteps.divide(redeemWeight)).multiply(redeemEquivalencePoints);
             int validPointToRedeem = totalPoints.intValue();
-            BigDecimal validPointToRedeemAsDecimal = new BigDecimal(validPointToRedeem).multiply(redeemEquivalencePoints);
-            BigDecimal totalStepsToBeRedeemed = BigDecimal.valueOf(validPointToRedeem).multiply(redeemWeight);
-            BigDecimal reminderSteps = numberOfSteps.subtract(totalStepsToBeRedeemed);
+            int x = numberOfSteps.divide(redeemWeight).intValue();
+            BigDecimal totalStepsToBeRedeemed =  redeemWeight.multiply(BigDecimal.valueOf( x ));
+            BigDecimal reminderSteps = numberOfSteps.subtract( totalStepsToBeRedeemed);
 
             if (isEligibleToRedeem(validPointToRedeem, redeemConfiguration.getMinimumPointsToBeRedeemed(), redeemConfiguration.getMaximumPointsToBeRedeemed())) {
                 CustomerRedeems customerRedeems = new CustomerRedeems();
                 customerRedeems.setCustomerId(this.userContextLite.getCustomerId());
                 customerRedeems.setBankId(this.userContextLite.getBankId());
-                customerRedeems.setNumberOfPoints(String.valueOf(validPointToRedeemAsDecimal));
+                customerRedeems.setNumberOfPoints(String.valueOf(validPointToRedeem));
+                customerRedeems.setTotalRedeemedSteps(String.valueOf(totalStepsToBeRedeemed));
+                customerRedeems.setDeviceId(fitnessData.getDeviceId());
                 makeRedeem(customerRedeems);
                 fitnessData.setNumberOfSteps(String.valueOf(reminderSteps));
                 return addReminderRecord(fitnessData);
@@ -75,7 +86,7 @@ public class CustomerRedeemServiceImpl implements CustomerRedeemService {
                 throw new GenericErrorException(translator.getTranslatedKey(ServiceConstants.ERROR_REDEEM_CONVERTER, "redeem.converter.data.error.title", "redeem.converter.data.error.message", this.lang));
             }
         }
-        throw new GenericErrorException("Operation Not Found");
+        throw new GenericErrorException(translator.getTranslatedKey(ServiceConstants.OPERATION_NOT_FOUND_ERROR, "operation.not.found.error.title", "operation.not.found.error.message", this.lang));
     }
 
     private HealthData addReminderRecord(FitnessData fitnessData) {
@@ -89,6 +100,7 @@ public class CustomerRedeemServiceImpl implements CustomerRedeemService {
     }
 
     private boolean isEligibleToRedeem(int numberOfPoint, int min, int max) {
+        log.info(" [ isEligibleToRedeem ] >> NumberOfPoint = {} -- Min = {} -- Max = {}" , numberOfPoint , min , max);
         return ((numberOfPoint >= min) && (numberOfPoint <= max));
     }
 }
