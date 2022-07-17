@@ -1,0 +1,6 @@
+type: object
+properties:
+  fitnnessData:
+    $ref: 'fitness-data.yaml'
+  redeemConfiguration:
+    $ref: 'redeem-configuration.yaml'

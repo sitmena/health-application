@@ -1,16 +1,23 @@
 package com.sitech.health.service;
 
 
-import com.sitech.dbs.health_service.api.service.v2.model.FitnessData;
-import com.sitech.dbs.health_service.api.service.v2.model.HealthData;
 import com.sitech.health.commons.UserContextDto;
-import org.springframework.http.ResponseEntity;
+import com.sitech.health.domain.FitnessDataEntity;
+
+import java.util.List;
+import java.util.UUID;
 
 public interface FitnessDataService {
 
-    ResponseEntity<HealthData> getFitnessByCustomerId(String customerId);
+    List<FitnessDataEntity> getFitnessByCustomerId(String customerId);
 
-    ResponseEntity<HealthData> findFirstByCustomerIdAndDeviceIdOrderByCreatedAtDesc(String customerId , String deviceId);
+    FitnessDataEntity findFirstByCustomerIdAndDeviceIdOrderByCreatedAtDesc(String customerId , UUID deviceId);
 
-    ResponseEntity<HealthData> postFitness(UserContextDto userContextLite, String requestedLanguage, FitnessData fitnessItem);
+    FitnessDataEntity postFitness(UserContextDto userContextLite, String requestedLanguage, FitnessDataEntity fitnessItem);
+
+    FitnessDataEntity findFirstByCustomerIdOrderByCreatedAt(String customerId);
+
+    FitnessDataEntity findById(UUID fitnessId);
+
+
 }

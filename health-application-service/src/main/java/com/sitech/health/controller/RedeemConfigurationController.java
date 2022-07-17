@@ -3,13 +3,16 @@ package com.sitech.health.controller;
 import com.sitech.dbs.health_service.api.service.v2.RedeemConfigurationApi;
 import com.sitech.dbs.health_service.api.service.v2.model.RedeemConfiguration;
 import com.sitech.health.commons.UserContextDto;
+import com.sitech.health.mapper.RedeemConfigurationMapper;
 import com.sitech.health.service.RedeemConfigurationService;
 import com.sitech.health.service.secuirty.UserContextService;
 import com.sitech.health.util.LanguageUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -27,10 +30,15 @@ public class RedeemConfigurationController implements RedeemConfigurationApi {
     private UserContextService userContextService;
 
     @Override
-    public ResponseEntity<RedeemConfiguration> postRedeemConfiguration(RedeemConfiguration redeemConfiguration) {
-        log.info("Start Calling Redeem Config [ {} ]" , redeemConfiguration.toString());
+    public ResponseEntity<RedeemConfiguration> addRedeemConfiguration(RedeemConfiguration redeemConfiguration) {
+        log.info("Start Calling Redeem Config [ {} ]", redeemConfiguration.toString());
         UserContextDto userContextLite = userContextService.getUserContextLite();
-        return redeemService.postRedeem(userContextLite , languageUtil.getRequestedLanguage(httpServletRequest) , redeemConfiguration);
+        return ResponseEntity.status(HttpStatus.OK).body(
+                RedeemConfigurationMapper.INSTANCE.entityToDto(
+                        redeemService.postRedeemConfiguration(
+                        userContextLite,
+                        languageUtil.getRequestedLanguage(httpServletRequest),
+                        redeemConfiguration)
+        ));
     }
-
 }

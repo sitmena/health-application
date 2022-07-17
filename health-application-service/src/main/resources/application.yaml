@@ -14,6 +14,8 @@ eureka:
       defaultZone: http://localhost:8080/registry/eureka/
 
 spring:
+  main:
+    allow-circular-references: true
   h2:
     console:
       enabled: true
@@ -26,7 +28,7 @@ spring:
     database: mysql
     generate-ddl: yes
     hibernate:
-      ddl-auto: 'create-drop'
+      ddl-auto: 'update'
   liquibase:
     enabled: false
     change-log: classpath:db/changelog/db.changelog-persistence.xml
@@ -68,5 +70,6 @@ buildingblocks:
 # Logging
 logging:
   level:
-    root: INFO
-    com.sitech.health: INFO
+    root: info
+    com.sitech.health: info
+    sql: info

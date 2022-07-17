@@ -2,12 +2,11 @@ package com.sitech.health.service;
 
 import com.sitech.dbs.health_service.api.service.v2.model.RedeemConfiguration;
 import com.sitech.health.commons.UserContextDto;
-import org.springframework.http.ResponseEntity;
+import com.sitech.health.domain.RedeemConfigurationEntity;
 
 public interface RedeemConfigurationService {
 
+    RedeemConfigurationEntity getRedeemConfigurationByBankId(String id);
 
-    RedeemConfiguration getRedeemByBankId(String id);
-
-    ResponseEntity<RedeemConfiguration> postRedeem(UserContextDto userContextLite, String requestedLanguage, RedeemConfiguration redeemConfiguration);
+    RedeemConfigurationEntity postRedeemConfiguration(UserContextDto userContextLite, String requestedLanguage, RedeemConfiguration redeemConfiguration);
 }

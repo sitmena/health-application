@@ -1,32 +1,18 @@
 type: object
-required: [ criteriaName , measurement , equivalencePoints , minimumPointsToBeRedeemed , maximumPointsToBeRedeemed ]
+required: [ bankId , factor , pointTarget , minimumPointsToBeRedeemed , maximumPointsToBeRedeemed ]
 properties:
-  id:
+  bankId:
     type: string
-    format: uuid
   bankName:
     type: string
-  criteriaName:
+  factor:
     type: string
-  measurement:
-    type: string
-  weight:
-    type: string
-  equivalencePoints:
-    type: string
+  pointTarget:
+    type: integer
   minimumPointsToBeRedeemed:
     type: integer
   maximumPointsToBeRedeemed:
     type: integer
-  createdAt:
-    type: string
-    pattern: "yyyy-MM-dd HH:mm:ss"
-    description: Creation date
-    example: "2022-06-27"
-  updatedAt:
-    type: string
-    pattern: "yyyy-MM-dd HH:mm:ss"
-    description: Updated date
-    example: "2022-06-27"
-  additions:
-    $ref: '../lib/schemas/additions.yaml'
+  pushInterval:
+    type: integer
+    description: Push interval in second

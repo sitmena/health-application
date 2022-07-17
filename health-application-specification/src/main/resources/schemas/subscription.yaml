@@ -1,11 +1,9 @@
 type: object
 required: [ deviceId ]
 properties:
-  id:
-    type: string
-    format: uuid
   deviceId:
     type: string
+    format: uuid
     description: Device Serial number
   deviceType:
     type: string
@@ -13,18 +11,3 @@ properties:
     description: Device Operating System
   deviceName:
     type: string
-  deviceStatus:
-    type: string
-    enum: [ACTIVE , DEACTIVATE]
-  createdAt:
-    type: string
-    pattern: "yyyy-MM-dd HH:mm:ss"
-    description: Create date
-    example: "2022-06-27"
-  updatedAt:
-    type: string
-    pattern: "yyyy-MM-dd HH:mm:ss"
-    description: Updated date
-    example: "2022-06-27"
-  additions:
-    $ref: '../lib/schemas/additions.yaml'

@@ -5,6 +5,7 @@ import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -13,7 +14,7 @@ import java.util.UUID;
 @Table(name = "subscription")
 @Data
 @EntityListeners(AuditingEntityListener.class)
-public class Subscription {
+public class SubscriptionEntity {
 
     @Id
     @GeneratedValue
@@ -22,10 +23,8 @@ public class Subscription {
     private UUID id;
     @Column(name = "bank_id")
     private String bankId;
-    @Column(name = "bank_name")
-    private String bankName;
     @Column(name = "deviceId")
-    private  String deviceId;
+    private  UUID deviceId;
     @Column(name = "customerId")
     private  String customerId;
     @Column(name = "deviceType")

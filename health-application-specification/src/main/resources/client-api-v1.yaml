@@ -1,8 +1,8 @@
 openapi: 3.0.3
 
 info:
-  title: Redeem Client API Spec
-  description: Specs for Redeem Client API
+  title: Health Application API Specification
+  description: Specification for Health Application Client API
   version: 1.0.0
   x-icon: credit_card
 
@@ -20,7 +20,7 @@ paths:
       security:
         - BearerAuth
       description: Adds or updates a redeem Configuration
-      operationId: postRedeemConfiguration
+      operationId: addRedeemConfiguration
       requestBody:
         content:
           application/json:
@@ -40,13 +40,13 @@ paths:
       tags:
         - redeemConfiguration
 
-  /client-api/v1/fitnessData:
+  /client-api/v1/customerSynchronizeData:
     description: No description available
     post:
       security:
         - BearerAuth
-      description: Adds or updates a redeem
-      operationId: postFitness
+      description: Adds customer fitness Data
+      operationId: synchronizeCustomerData
       requestBody:
         content:
           application/json:
@@ -57,21 +57,49 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/healthData'
+                $ref: 'schemas/fitness-data.yaml'
           description: return general status response
         400:
           $ref: 'lib/common-types.yaml#/components/responses/400BadRequest'
         500:
           $ref: 'lib/common-types.yaml#/components/responses/500InternalServerError'
       tags:
-        - fitnessData
+        - customerSynchronizeData
 
-  /client-api/v1/clientRedeem:
+  /client-api/v1/customerLastSynchronizedData:
+    get:
+      security:
+        - BearerAuth
+      parameters:
+        - in: query
+          required: true
+          name: deviceId
+          schema:
+            type: string
+            format: uuid
+        - in: header
+          name: activateDevice
+          required: false
+          schema:
+            type: boolean
+      description: No description available
+      operationId: getCustomerSynchronizedData
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: 'schemas/health-data.yaml'
+          description: if operation is successful
+      tags:
+        - customerLastSynchronizedData
+
+  /client-api/v1/customerRedeem:
     post:
       security:
         - BearerAuth
       description: Adds or updates a redeem
-      operationId: doRedeem
+      operationId: doCustomerRedeem
       requestBody:
         content:
           application/json:
@@ -82,17 +110,23 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/healthData'
+                $ref: 'schemas/fitness-data.yaml'
           description: return general status response
       tags:
-        - clientRedeem
+        - customerRedeem
 
-  /client-api/v1/clientSubscription:
+  /client-api/v1/customerSubscription:
     post:
       security:
         - BearerAuth
-      description: Adds or updates a subscribe
-      operationId: subscribe
+      parameters:
+        - in: header
+          name: activateDevice
+          required: false
+          schema:
+            type: boolean
+      description: Adds customer Subscription
+      operationId: customerSubscribe
       requestBody:
         content:
           application/json:
@@ -106,37 +140,9 @@ paths:
                 $ref: 'schemas/subscription.yaml'
           description: return general status response
       tags:
-        - subscription
-
-  /client-api/v1/activateDevice:
-    post:
-      security:
-        - BearerAuth
-      description: Activate Device
-      operationId: activateDevice
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: 'schemas/deviceActivation.yaml'
-      responses:
-        200:
-          content:
-            application/json:
-              schema:
-                $ref: 'schemas/deviceActivation.yaml'
-          description: return general status response
-      tags:
-        - deviceActivation
-
+        - customerSubscription
 components:
   schemas:
     healthData:
-      type: object
-      properties:
-        fitnnessData:
-          $ref: 'schemas/fitness-data.yaml'
-        redeemConfiguration:
-          $ref: 'schemas/redeem-configuration.yaml'
-        additions:
-          $ref: '../lib/schemas/additions.yaml'
+      $ref: 'schemas/health-data.yaml'
+

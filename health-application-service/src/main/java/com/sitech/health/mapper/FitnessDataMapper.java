@@ -1,6 +1,7 @@
 package com.sitech.health.mapper;
 
-import com.sitech.health.domain.FitnessData;
+import com.sitech.dbs.health_service.api.service.v2.model.FitnessData;
+import com.sitech.health.domain.FitnessDataEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -9,8 +10,8 @@ public interface FitnessDataMapper {
 
     FitnessDataMapper INSTANCE = Mappers.getMapper(FitnessDataMapper.class);
 
-    FitnessData dtoToEntity(com.sitech.dbs.health_service.api.service.v2.model.FitnessData fitnessItem);
+    FitnessDataEntity dtoToEntity(FitnessData fitnessData);
 
-    com.sitech.dbs.health_service.api.service.v2.model.FitnessData entityToDto(FitnessData fitnessItem);
+    FitnessData entityToDto(FitnessDataEntity fitnessDataEntity);
 
 }

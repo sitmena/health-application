@@ -1,17 +1,23 @@
 package com.sitech.health.repository;
 
-import com.sitech.dbs.health_service.api.service.v2.model.HealthData;
-import com.sitech.health.domain.FitnessData;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.http.ResponseEntity;
+import com.sitech.health.domain.FitnessDataEntity;
+import com.sitech.health.domain.SubscriptionEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
 @Repository
-public interface FitnessDataRepository extends PagingAndSortingRepository<FitnessData, String> {
+public interface FitnessDataRepository extends JpaRepository<FitnessDataEntity, UUID> {
 
-    FitnessData findFirstByCustomerIdOrderByCreatedAtDesc(String customerId);
+    FitnessDataEntity findFirstByCustomerIdAndDeviceIdOrderByCreatedAtDesc(String customerId, UUID deviceId);
 
+    List<FitnessDataEntity> findByCustomerId(String customerId);
 
-    FitnessData findFirstByCustomerIdAndDeviceIdOrderByCreatedAtDesc(String customerId , String deviceId);
+    FitnessDataEntity findFirstByCustomerIdOrderByCreatedAt(String customerId);
 
+    @Override
+    Optional<FitnessDataEntity> findById(UUID imageId);
 }

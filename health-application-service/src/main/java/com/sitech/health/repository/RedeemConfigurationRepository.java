@@ -1,13 +1,13 @@
 package com.sitech.health.repository;
 
 
-import com.sitech.health.domain.RedeemConfiguration;
+import com.sitech.health.domain.RedeemConfigurationEntity;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface RedeemConfigurationRepository extends PagingAndSortingRepository<RedeemConfiguration, String> {
+public interface RedeemConfigurationRepository extends PagingAndSortingRepository<RedeemConfigurationEntity, String> {
 
-    RedeemConfiguration findByBankId(String bankId);
+    RedeemConfigurationEntity findByBankId(String bankId);
 }
