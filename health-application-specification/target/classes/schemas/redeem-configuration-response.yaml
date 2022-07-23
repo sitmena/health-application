@@ -1,4 +1,0 @@
-title: Redeems
-type: array
-items:
-  $ref: 'redeem-configuration.yaml'
