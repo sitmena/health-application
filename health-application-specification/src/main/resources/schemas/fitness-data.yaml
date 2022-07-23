@@ -4,13 +4,13 @@ properties:
   numberOfSteps:
     type: integer
   fromDate:
-    type: string
-    format: date-time
+    type: integer
+    format: int64
     description: Creation date and time
     example: "2022-07-07T08:30:00Z"
   toDate:
-    type: string
-    format: date-time
+    type: integer
+    format: int64
     description: Creation date and time
     example: "2022-07-07T08:35:00Z"
   deviceId:

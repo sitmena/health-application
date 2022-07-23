@@ -1,5 +1,5 @@
 type: object
-required: [ deviceId ]
+required: [ deviceId, deviceType , deviceName ]
 properties:
   deviceId:
     type: string
@@ -7,7 +7,7 @@ properties:
     description: Device Serial number
   deviceType:
     type: string
-    enum: [ Android, IOS ]
+    enum: [ IOS,Android,Huawei ]
     description: Device Operating System
   deviceName:
     type: string

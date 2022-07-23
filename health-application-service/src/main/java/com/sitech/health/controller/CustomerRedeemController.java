@@ -3,7 +3,6 @@ package com.sitech.health.controller;
 
 import com.sitech.dbs.health_service.api.service.v2.CustomerRedeemApi;
 import com.sitech.dbs.health_service.api.service.v2.model.FitnessData;
-import com.sitech.health.commons.UserContextDto;
 import com.sitech.health.mapper.FitnessDataMapper;
 import com.sitech.health.service.CustomerRedeemService;
 import com.sitech.health.service.secuirty.UserContextService;
@@ -32,9 +31,8 @@ public class CustomerRedeemController implements CustomerRedeemApi {
     @Override
     public ResponseEntity<FitnessData> doCustomerRedeem(FitnessData fitnessData) {
         log.info("Start Calling Customer Redeem [ {} ]",fitnessData.toString());
-        UserContextDto userContextLite = userContextService.getUserContextLite();
         return ResponseEntity.status(HttpStatus.OK).body(
-                FitnessDataMapper.INSTANCE.entityToDto(clientRedeemService.doRedeem(userContextLite, languageUtil.getRequestedLanguage(httpServletRequest), fitnessData))
+                FitnessDataMapper.INSTANCE.entityToDto(clientRedeemService.doRedeem(fitnessData))
         );
     }
 }

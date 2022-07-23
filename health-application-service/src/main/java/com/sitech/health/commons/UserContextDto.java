@@ -10,4 +10,5 @@ public class UserContextDto {
     private String bankId;
     private String userType;
     private String customerId;
+    private String requestedLanguage;
 }

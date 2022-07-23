@@ -1,7 +1,6 @@
 package com.sitech.health.repository;
 
 import com.sitech.health.domain.FitnessDataEntity;
-import com.sitech.health.domain.SubscriptionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +15,7 @@ public interface FitnessDataRepository extends JpaRepository<FitnessDataEntity, 
 
     List<FitnessDataEntity> findByCustomerId(String customerId);
 
-    FitnessDataEntity findFirstByCustomerIdOrderByCreatedAt(String customerId);
+    FitnessDataEntity findFirstByCustomerIdOrderByCreatedAtDesc(String customerId);
 
     @Override
     Optional<FitnessDataEntity> findById(UUID imageId);

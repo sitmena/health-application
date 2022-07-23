@@ -28,12 +28,12 @@ public class SubscriptionEntity {
     @Column(name = "customerId")
     private  String customerId;
     @Column(name = "deviceType")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private DeviceType deviceType;
     @Column(name = "deviceName")
     private  String deviceName;
     @Column(name = "deviceStatus")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private DeviceStatus deviceStatus;
     @CreatedDate
     @Column(name = "created_at")

@@ -14,6 +14,46 @@ tags:
   - name: Retail
 
 paths:
+  /client-api/v1/customerSubscription:
+    get:
+      security:
+        - BearerAuth
+      description: No description available
+      operationId: getCustomerSubscription
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: "schemas/device-info.yaml"
+          description: Customer Subscription
+        510:
+          description: User Not Subscripe.
+      tags:
+        - customerSubscription
+
+    post:
+      security:
+        - BearerAuth
+      description: No Desc
+      operationId: addCustomerSubscription
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "schemas/device-info.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: "schemas/device-info.yaml"
+          description: return general status response.
+        512:
+          description: User Already Subscribed.
+      tags:
+        - customerSubscription
+
   /client-api/v1/config/redeemConfiguration:
     description: Redeem Configuration
     post:
@@ -22,51 +62,26 @@ paths:
       description: Adds or updates a redeem Configuration
       operationId: addRedeemConfiguration
       requestBody:
+        required: true
         content:
           application/json:
             schema:
-              $ref: 'schemas/redeem-configuration.yaml'
+              $ref: "schemas/redeem-configuration.yaml"
       responses:
         200:
           content:
             application/json:
               schema:
-                $ref: 'schemas/redeem-configuration.yaml'
+                $ref: "schemas/redeem-configuration.yaml"
           description: return general status response
         400:
-          $ref: 'lib/common-types.yaml#/components/responses/400BadRequest'
+          $ref: "lib/common-types.yaml#/components/responses/400BadRequest"
         500:
-          $ref: 'lib/common-types.yaml#/components/responses/500InternalServerError'
+          $ref: "lib/common-types.yaml#/components/responses/500InternalServerError"
       tags:
         - redeemConfiguration
 
-  /client-api/v1/customerSynchronizeData:
-    description: No description available
-    post:
-      security:
-        - BearerAuth
-      description: Adds customer fitness Data
-      operationId: synchronizeCustomerData
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: 'schemas/fitness-data.yaml'
-      responses:
-        200:
-          content:
-            application/json:
-              schema:
-                $ref: 'schemas/fitness-data.yaml'
-          description: return general status response
-        400:
-          $ref: 'lib/common-types.yaml#/components/responses/400BadRequest'
-        500:
-          $ref: 'lib/common-types.yaml#/components/responses/500InternalServerError'
-      tags:
-        - customerSynchronizeData
-
-  /client-api/v1/customerLastSynchronizedData:
+  /client-api/v1/customerData:
     get:
       security:
         - BearerAuth
@@ -77,11 +92,6 @@ paths:
           schema:
             type: string
             format: uuid
-        - in: header
-          name: activateDevice
-          required: false
-          schema:
-            type: boolean
       description: No description available
       operationId: getCustomerSynchronizedData
       responses:
@@ -89,10 +99,35 @@ paths:
           content:
             application/json:
               schema:
-                $ref: 'schemas/health-data.yaml'
+                $ref: "schemas/health-data.yaml"
           description: if operation is successful
       tags:
-        - customerLastSynchronizedData
+        - customerData
+
+    post:
+      security:
+        - BearerAuth
+      description: Adds customer fitness Data
+      operationId: synchronizeCustomerData
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "schemas/fitness-data.yaml"
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: "schemas/fitness-data.yaml"
+          description: return general status response
+        400:
+          $ref: "lib/common-types.yaml#/components/responses/400BadRequest"
+        500:
+          $ref: "lib/common-types.yaml#/components/responses/500InternalServerError"
+      tags:
+        - customerData
 
   /client-api/v1/customerRedeem:
     post:
@@ -104,45 +139,40 @@ paths:
         content:
           application/json:
             schema:
-              $ref: 'schemas/fitness-data.yaml'
+              $ref: "schemas/fitness-data.yaml"
       responses:
         200:
           content:
             application/json:
               schema:
-                $ref: 'schemas/fitness-data.yaml'
+                $ref: "schemas/fitness-data.yaml"
           description: return general status response
       tags:
         - customerRedeem
 
-  /client-api/v1/customerSubscription:
+  /client-api/v1/activateDevice:
     post:
       security:
         - BearerAuth
-      parameters:
-        - in: header
-          name: activateDevice
-          required: false
-          schema:
-            type: boolean
-      description: Adds customer Subscription
-      operationId: customerSubscribe
       requestBody:
+        required: true
         content:
           application/json:
             schema:
-              $ref: 'schemas/subscription.yaml'
+              $ref: "schemas/device-info.yaml"
+      description: Adds customer Subscription
+      operationId: activateCustomerDevice
       responses:
         200:
-          content:
-            application/json:
-              schema:
-                $ref: 'schemas/subscription.yaml'
-          description: return general status response
+          description: "OK"
+        510:
+          description: User Not Subscripe.
+        511:
+          description: Device Not Activated.
       tags:
-        - customerSubscription
+        - activateDevice
+
 components:
   schemas:
     healthData:
-      $ref: 'schemas/health-data.yaml'
-
+      $ref: "schemas/health-data.yaml"

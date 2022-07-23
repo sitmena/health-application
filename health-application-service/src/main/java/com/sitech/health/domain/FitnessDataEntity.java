@@ -10,7 +10,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
@@ -30,12 +29,12 @@ public class FitnessDataEntity {
     @NotNull(message = "Number Of Steps is mandatory")
     @Column(name = "number_of_steps")
     private Integer numberOfSteps;
-    @Column(name = "fromDate")
+    @Column(name = "from_date")
     @NotNull(message = "From Date is mandatory")
-    private OffsetDateTime fromDate;
-    @Column(name = "toDate")
+    private Long fromDate;
+    @Column(name = "to_date")
     @NotNull(message = "To Date is mandatory")
-    private OffsetDateTime toDate;
+    private Long  toDate;
     @Column(name = "device_id")
     @NotNull(message = "Device Id is mandatory")
     @Type(type = "org.hibernate.type.UUIDCharType")
